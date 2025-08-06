@@ -1,0 +1,268 @@
+{
+    "地图探索": {
+        "next": [
+            "未开启定位",
+            // "点击确定",
+            // "点击解锁",
+            // "点击关闭",
+            "点击定位",
+            // "点击神像定位",
+            // "点击女神定位",
+            "地图开始战斗",
+            "点击领取奖励",
+            // "点击挑战",
+            // "点击激活",
+            // "进入下一层",
+            // "换装备",
+            // "识别任务",
+            // "点击空白处关闭"
+        ],
+        "on_error": ["地图探索"],
+        "interrupt":["返回主地图"]
+    },
+    "未开启定位": {
+        "recognition": "TemplateMatch",
+        "template": "not_active_locate.png",
+        "threshold": 0.92,
+        "post_delay": 300,
+        "action": "Click",
+        "next": ["点击定位"],
+        "on_error":["返回主地图"]
+    },
+     "关闭定位": {
+        "recognition": "FeatureMatch",
+        "template": "active_locate.png",
+        "action": "Click",
+        "next": ["向上滑动500"]
+    },
+    "点击定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate.png",
+        "action": "Click",
+        "next": ["地图定位"],
+        "interrupt":["地图探索"]
+    },
+    "点击女神定位": {
+        "recognition": "TemplateMatch",
+        "template": "失落女神.png",
+        "action": "Click",
+        "post_delay": 300,
+        "next": ["点击女神像"],
+        "interrupt":["地图探索"]
+    },
+    "点击女神像": {
+        "recognition": "TemplateMatch",
+        "template": "失落女神像.png",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["点击解锁", "地图探索"]
+    },
+    "点击神像定位": {
+        "recognition": "TemplateMatch",
+        "template": "神像.png",
+        "action": "Click",
+        "post_delay": 300,
+        "next": ["点击神像"],
+        "interrupt":["地图探索"]
+    },
+    "点击神像": {
+        "recognition": "TemplateMatch",
+        "template": "森林神像.png",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["点击解锁", "地图探索"]
+    },
+    "地图定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate.png",
+        "pre_wait_freezes": 300,
+        "target_offset": [
+            0,
+            80,
+            0,
+            -80
+        ],
+        "action": "Click",
+        // "next": ["点击继续",  "点击激活", "点击探索", "开始战斗", "点击空白处关闭"],
+        "next":["点击激活", "点击探索", "地图开始战斗", "地图探索"],
+        "post_delay": 500,
+        "on_error":["返回主地图"]
+    },
+    "神庙定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate.png",
+        // "roi_offset": [0, -80, 0, -80],
+        "target_offset": [
+            0,
+            250,
+            0,
+            -250
+        ],
+        "action": "Click",
+        "post_delay": 300,
+        "next": ["向上滑动500"]
+    },
+    "遮挡定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate.png",
+        "target_offset": [
+            0,
+            250,
+            0,
+            -250
+        ],
+        "action": "Click",
+        // "next": ["点击继续"],
+        "interrupt":["地图探索"],
+        "on_error":["返回主地图"]
+    },
+    "点击菜单": {
+        "recognition": "TemplateMatch",
+        "template": "menu.png",
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+    "点击返回": {
+        "recognition": "TemplateMatch",
+        "template": "back.png",
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+    "点击解锁": {
+        "recognition": "TemplateMatch",
+        "template": "解锁.png",
+        "action": "Click",
+        "post_delay": 200,
+        "next": ["地图探索"]
+    },
+    "点击关闭": {
+        "recognition": "OCR",
+        "expected": "关闭",
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+    "点击激活": {
+        "recognition": "TemplateMatch",
+        "template": "激活.png",
+        "action": "Click",
+        "post_delay": 200,
+        "next": ["地图探索"]
+    },
+    "点击领取奖励": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "target_offset": [-20, 50, -50, 20],
+        "next": ["地图探索"],
+        "post_delay": 200
+    },
+    "点击探索": {
+        "recognition": "TemplateMatch",
+        "template": "探索.png",
+        "post_delay": 300,
+        "action": "Click",
+        "next": ["地图开始战斗"],
+        "on_error":["返回主地图"]
+    },
+    "进入下一层": {
+        "recognition": "OCR",
+        "expected": "进入下一层",
+        "post_delay": 200,
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+    "点击焦点": {
+        "recognition": "TemplateMatch",
+        "template": "focus.png",
+        "action": "Click",
+        "next": ["地图探索"],
+        "target_offset": [
+            -50,
+            50,
+            50,
+            -50
+        ],
+    },
+    "返回主地图": {
+        "action": "Click",
+        "target_offset": [0, -700, 0, 700],
+        "next": ["向上滑动500"]
+    },
+    "点击空白处关闭": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": ["向上滑动500"]
+    },
+    "向上滑动500": {
+        "action": "Swipe",
+        "end_offset": [200, -500, 0, 500],
+        "next": ["地图探索"]
+    },
+    "识别任务": {
+        "recognition": "TemplateMatch",
+        "template": "任务.png",
+        "action": "Click",
+        "roi":[250, 980, 470, 300],
+        "target_offset": [-50, 40, 50, -40],
+        "next":["点击前往"]
+    },
+    "点击前往": {
+        "recognition": "TemplateMatch",
+        "template": "前往.png",
+        "action": "Click"
+        // "next": ["向上滑动500"]
+    },
+    "点击确定": {
+        "recognition": "TemplateMatch",
+        "template": "确定.png",
+        "post_delay": 200,
+        "action": "Click",
+        "next": ["向上滑动500"]
+    },
+    "换装备": {
+        "recognition": "TemplateMatch",
+        "template": "换装备.png",
+        "post_delay": 200,
+        "action": "Click",
+        "next": ["更换"]
+    },
+    "更换": {
+        "recognition": "TemplateMatch",
+        "template": "更换.png",
+        "post_delay": 200,
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+     "继续对话": {
+        "recognition": "TemplateMatch",
+        "template": "continue.png",
+        "post_delay": 200,
+        "action": "Click",
+        "next": ["地图探索"]
+    },
+    "地图开始战斗": {
+        "timeout": 10000,
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "action": "Click",
+        "next": ["地图战斗中"]
+    },
+    "地图战斗中":{
+        "timeout": 20000,
+        "next": ["地图战斗结束"],
+        "on_error": ["地图战斗中2"]
+    },
+    "地图战斗中2":{
+        "timeout": 20000,
+        "next": ["地图战斗结束"],
+        "on_error": ["地图战斗中2"]
+    },
+    "地图战斗结束": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_delay": 1000,
+        "interrupt": ["地图探索"]
+    }
+}

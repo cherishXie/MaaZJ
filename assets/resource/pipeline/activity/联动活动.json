@@ -1,0 +1,40 @@
+{
+    "联动活动-点击普通关卡": {
+        "recognition": "TemplateMatch",
+        "template": "当前关卡.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["联动活动-进入"]
+    },
+     "联动活动-点击困难关卡": {
+        "recognition": "TemplateMatch",
+        "template": "困难-当前关卡.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["联动活动-进入"]
+    },
+    "联动活动-进入":{
+        "recognition": "OCR",
+        "expected": "进入",
+        "action": "Click",
+        "next": ["联动-持续点击"]
+    },
+    "联动-持续点击": {
+        "action": "Click",
+        "next": ["联动活动-点击开始战斗", "联动活动-点击对话", "联动活动-点击普通关卡", "联动活动-点击困难关卡", "联动-持续点击"]
+    },
+     "联动活动-点击开始战斗": {
+        "timeout": 10000,
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "action": "Click",
+        "next": ["联动-持续点击"]
+    },
+    "联动活动-点击对话": {
+        "recognition": "TemplateMatch",
+        "template": "对话.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["联动-持续点击"]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "魔物讨伐": {
+        "next": [
+            "点击魔物讨伐"
+        ]
+    },
+    "点击魔物讨伐":{
+        "recognition": "OCR",
+        "expected": "魔物讨伐",
+        "action": "Click",
+        "next": ["魔物讨伐点击挑战"]
+    },
+    "魔物讨伐点击挑战": {
+        "recognition": "TemplateMatch",
+        "template": "挑战.png",
+        "action": "Click",
+        "next": ["魔物讨伐点击开始战斗"]
+    },
+    "魔物讨伐点击开始战斗": {
+        "timeout": 10000,
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "action": "Click",
+        "next": ["魔物讨伐战斗中"]
+    },
+    "魔物讨伐战斗中":{
+        "timeout": 20000,
+        "next": ["魔物讨伐战斗结束"],
+        "on_error": ["魔物讨伐战斗中2"]
+    },
+    "魔物讨伐战斗中2":{
+        "timeout": 20000,
+        "next": ["魔物讨伐战斗结束"],
+        "on_error": ["魔物讨伐战斗中"]
+    },
+    "魔物讨伐战斗结束": {
+        "recognition": "OCR",
+        "expected": "战斗结束",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["魔物讨伐已完成本层讨伐_领取奖励"]
+    },
+    "魔物讨伐已完成本层讨伐_领取奖励":{
+        "recognition": "OCR",
+        "expected": "已完成本层讨伐",
+        "action": "Click",
+        "target_offset": [
+            50,
+            -150,
+            -50,
+            150
+        ],
+        "next": ["魔物讨伐已获得奖励"]
+    },
+    "魔物讨伐已获得奖励":{
+        "recognition": "OCR",
+        "expected": "获得奖励",
+        "action": "Click",
+        "next": ["魔物讨伐下一层"]
+    },
+    "魔物讨伐下一层":{
+        "recognition": "TemplateMatch",
+        "template": "魔物讨伐下一层.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["魔物讨伐点击挑战"]
+    }
+}
