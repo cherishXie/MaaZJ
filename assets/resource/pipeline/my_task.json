@@ -1,11 +1,141 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "MyTask4": {
-        "recognition": "Custom",
-        "custom_recognition": "my_reco_222",
-        "action": "Custom",
-        "custom_action": "my_action_111"
+    "TEST": {
+        "next": [
+            "点击继续",
+            "开始战斗",
+            "点击解锁",
+            "点击关闭",
+            "点击定位",
+            "点击领取奖励",
+            "点击激活",
+            "点击空白处关闭"
+        ],
+        "on_error": ["TEST"],
+        "interrupt":["返回主地图"]
+    },
+    "开始战斗": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击继续": {
+        "recognition": "TemplateMatch",
+        "template": "next.png",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate.png",
+        "action": "Click",
+        "next": ["地图定位", "神庙定位"],
+        "interrupt":["TEST"],
+        "on_error":["返回主地图"]
+    },
+    "地图定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate_upper.png",
+        // "roi_offset": [0, -80, 0, -80],
+        "target_offset": [
+            0,
+            80,
+            0,
+            -80
+        ],
+        "action": "Click",
+        "next": ["点击继续", "点击激活", "神庙定位"],
+        "interrupt":["TEST"],
+        "on_error":["返回主地图"]
+    },
+    "神庙定位": {
+        "recognition": "TemplateMatch",
+        "template": "locate_upper.png",
+        // "roi_offset": [0, -80, 0, -80],
+        "target_offset": [
+            0,
+            250,
+            0,
+            -250
+        ],
+        "action": "Click",
+        "next": ["点击继续", "点击探索"],
+        "interrupt":["TEST"],
+        "on_error":["返回主地图"]
+    },
+    "点击菜单": {
+        "recognition": "FeatureMatch",
+        "template": "menu.png",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击返回": {
+        "recognition": "FeatureMatch",
+        "template": "back.png",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击解锁": {
+        "recognition": "OCR",
+        "expected": "解锁",
+        "action": "Click",
+        "index": 1,
+        "next": ["TEST"]
+    },
+    "点击关闭": {
+        "recognition": "OCR",
+        "expected": "关闭",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击激活": {
+        "recognition": "OCR",
+        "expected": "激活",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击领取奖励": {
+        "recognition": "FeatureMatch",
+        "template": "gift.png",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击探索": {
+        "recognition": "OCR",
+        "expected": "探索",
+        "action": "Click",
+        "next": ["进入下一层"],
+        "interrupt":["TEST"],
+        "on_error":["返回主地图"]
+    },
+    "进入下一层": {
+        "recognition": "OCR",
+        "expected": "进入下一层",
+        "action": "Click",
+        "next": ["TEST"]
+    },
+    "点击焦点": {
+        "recognition": "TemplateMatch",
+        "template": "focus.png",
+        "action": "Click",
+        "next": ["TEST"],
+        "target_offset": [
+            -50,
+            50,
+            50,
+            -50
+        ]
+    },
+    "返回主地图": {
+        "action": "Click",
+        "target_offset": [0, -600, 0, 600],
+        // "target_offset": [10, 10, 700, 1200],
+        "next": ["TEST"]
+    },
+    "点击空白处关闭": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": ["TEST"]
     }
 }

@@ -450,3 +450,4 @@ tools/ImageCropper/**/*.png
 config
 debug
 .DS_Store
+mfaa
