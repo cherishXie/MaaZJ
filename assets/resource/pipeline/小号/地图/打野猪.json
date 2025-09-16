@@ -1,0 +1,135 @@
+{
+    "FARM_点击世界":{
+        "recognition": "TemplateMatch",
+        "roi" : [435,1141,263,138],
+        "template": ["地图图标.png", "地图图标2.png"],
+        "action": "Click",
+        "next": ["FARM_世界首页"],
+        "interrupt":["FARM_点击世界", "启动再等等"]
+    },
+    "FARM_世界首页":{
+        "recognition": "TemplateMatch",
+        "template": "地图宝箱.png",
+        "action": "DoNothing",
+        "next": ["FARM_定位到森之国"],
+        "interrupt":["执行横向左滑动", "启动再等等"]
+    },
+    "FARM_定位到森之国": {
+        "recognition": "OCR",
+        "expected": "森之国",
+        "action": "Click",
+        "next": ["FARM_到达森之国"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_到达森之国":{
+        "recognition": "OCR",
+        "expected": ["森之国", "归木村"],
+        "action": "DoNothing",
+        "roi" : [530,244,165,61],
+        "next": ["FARM_点击小地图"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_点击小地图": {
+        "action": "Click",
+        "next": ["FARM_小地图页面"],
+        "target": [612, 177, 0, 0],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_小地图页面":{
+        "recognition": "OCR",
+        "expected": "森之国",
+        "roi" : [372,1136,337,140],
+        "action": "DoNothing",
+        "next": ["FARM_寻找森之国二"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_寻找森之国二": {
+        "action": "DoNothing",
+        "next": ["FARM_定位到森之国二"],
+        "interrupt":["执行横向右滑动", "执行横向下滑动", "启动再等等"]
+    },
+    "FARM_定位到森之国二": {
+        "recognition": "TemplateMatch",
+        "template": "森之国二.png",
+        "threshold": 0.9,
+        "target_offset": [75, 170, 0, 0],
+        "action": "Click",
+        "next": ["FARM_返回到地图中"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_返回到地图中": {
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 500,
+        "interrupt":["启动再等等"],
+        "next": ["FARM_循环打野猪"]
+    },
+    "执行横向左滑动": {
+        "action": "Swipe",
+        "begin": [405, 800, 0, 0],
+        "end": [655, 800, 0, 0],
+        "duration": 500,
+        "post_wait_freezes": 500,
+        "interrupt":["启动再等等"]
+    },
+    "执行横向右滑动": {
+        "action": "Swipe",
+        "begin": [455, 800, 0, 0],
+        "end": [250, 800, 0, 0],
+        "duration": 500,
+        "post_wait_freezes": 500,
+        "interrupt":["启动再等等"]
+    },
+     "执行横向下滑动": {
+        "action": "Swipe",
+        "begin": [400, 600, 0, 0],
+        "end": [400, 400, 0, 0],
+        "duration": 500,
+        "post_delay": 1000,
+        "interrupt":["启动再等等"]
+    },
+    "FARM_打野猪":{
+        "recognition": "TemplateMatch",
+        "template": ["怪物-野猪.png", "怪物-野猪2.png", "怪物-野猪3.png", "怪物-野猪4.png", "怪物-野猪5.png"],
+        "action": "Click",
+        "post_delay": 1200,
+        "roi" : [198,170,521,720],
+        "next": ["FARM_体力不足", "FARM_打野猪", "FARM_关闭自身", "FARM_找不到野猪"]
+    },
+    "FARM_循环打野猪":{
+        "timeout": 10000,
+        "next": ["FARM_找不到野猪"],
+        "interrupt":["FARM_打野猪"]
+    },
+    "FARM_找不到野猪": {
+        "recognition": "TemplateMatch",
+        "template": ["怪物-野猪.png", "怪物-野猪2.png", "怪物-野猪3.png", "怪物-野猪4.png", "怪物-野猪5.png"],
+        "action": "Click",
+        "inverse": true,
+        "post_delay": 1500,
+        "roi" : [198,170,521,720],
+        "next": ["FARM_打野猪", "FARM_世界返回家园"]
+    },
+    "FARM_关闭自身": {
+        "recognition": "OCR",
+        "expected": "料理",
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "next": ["FARM_打野猪"],
+        "post_delay": 1000
+    },
+    "FARM_体力不足":{
+        "recognition": "OCR",
+        "expected": "体力不足",
+        "action": "DoNothing",
+        "next": ["FARM_世界返回家园"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_世界返回家园":{
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击公会"],
+        "interrupt":["FARM_世界返回家园", "启动再等等"]
+    }
+}

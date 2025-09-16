@@ -1,0 +1,60 @@
+{
+    "FARM_点击幻想阶梯":{
+        "recognition": "OCR",
+        "expected": "幻想阶梯",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_进入幻想阶梯"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入幻想阶梯":{
+        "target": [600, 290, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_挑战幻想阶梯", "FARM_切回幻想阶梯"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_挑战幻想阶梯":{
+        "recognition": "OCR",
+        "expected": ["挑战"],
+        "action": "Click",
+        "next": ["FARM_自动挑战幻想阶梯"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_切回幻想阶梯":{
+        "recognition": "OCR",
+        "expected": ["切回"],
+        "action": "Click",
+        "next": ["FARM_幻想阶梯返回1"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_自动挑战幻想阶梯":{
+        "recognition": "OCR",
+        "expected": ["开始战斗", "战斗失败", "战斗胜利"],
+        "target": [45, 830, 0, 0],
+        "action": "Click",
+        "next": ["FARM_退出幻想阶梯"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_退出幻想阶梯":{
+        "target": [80, 1215, 0, 0],
+        "action": "Click",
+        "next": ["FARM_幻想阶梯返回1"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_幻想阶梯返回1": {
+        "recognition": "OCR",
+        "expected": "阶梯",
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_幻想阶梯返回2"]
+    },
+    "FARM_幻想阶梯返回2": {
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击主家园"],
+        "interrupt":["启动再等等"]
+    }
+}

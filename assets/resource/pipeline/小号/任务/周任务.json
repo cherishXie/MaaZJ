@@ -1,0 +1,36 @@
+{
+    "FARM_周任务": {
+        "recognition": "OCR",
+        "expected": "周常",
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_周任务列表"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_周任务列表": {
+        "recognition": "OCR",
+        "expected": "周常任务",
+        "action": "DoNothing",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_周任务领取", "FARM_无周任务"]
+    },
+    "FARM_周任务领取": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi" : [238,168,446,1102],
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_周任务领取", "FARM_无周任务"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_无周任务": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "inverse": true,
+        "roi" : [238,168,446,1102],
+        "action": "DoNothing",
+        "post_delay": 200,
+        "next":["FARM_任务返回1"],
+        "interrupt":["启动再等等"]
+    }
+}

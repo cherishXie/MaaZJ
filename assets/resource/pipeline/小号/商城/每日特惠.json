@@ -1,0 +1,35 @@
+{
+    "FARM_点击每日特惠":{
+        "recognition": "OCR",
+        "expected": "每日特惠",
+        "action": "Click",
+        "next":["FARM_领取每日特惠", "FARM_每日特惠已领取"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_每日特惠已领取":{
+        "recognition": "OCR",
+        "expected": ["已领取", "领取"],
+        "action": "DoNothing",
+        "replace": ["巴", "已"],
+        "next":["FARM_每日特惠返回到活动列表"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取每日特惠":{
+        "recognition": "OCR",
+        "expected": "每日赠礼",
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_每日特惠返回到活动列表"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_每日特惠返回到活动列表":{
+        "recognition": "OCR",
+        "expected": "超值精选",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["执行滑动", "启动再等等"],
+        "next": ["FARM_点击本周精选", "FARM_每日特惠返回到活动列表"]
+    }
+}

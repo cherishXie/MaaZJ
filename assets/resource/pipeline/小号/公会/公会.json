@@ -1,0 +1,36 @@
+{
+    "FARM_点击公会":{
+        "recognition": "TemplateMatch",
+        "template": "公会.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_公会界面", "FARM_无公会"],
+        "interrupt":["FARM_点击公会", "启动再等等"]
+    },
+    "FARM_公会界面":{
+        "recognition": "OCR",
+        "expected": ["公会大厅", "会大"],
+        "action": "Click",
+        "target": [600, 960, 0 , 0],
+        "post_delay": 500,
+        "next": ["FARM_无可收公会币", "FARM_点击讨伐"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_无可收公会币":{
+        "recognition": "OCR",
+        "expected": "挂机详情",
+        "action": "Click",
+        "target": [160, 228, 0, 0],
+        "next": ["FARM_点击讨伐"],
+        "post_delay": 300,
+        "interrupt":["启动再等等"]
+    },
+    "FARM_无公会": {
+        "recognition": "OCR",
+        "expected": ["加入公会", "创建公会"],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_点击笔记"],
+        "interrupt":["启动再等等"]
+    }
+}

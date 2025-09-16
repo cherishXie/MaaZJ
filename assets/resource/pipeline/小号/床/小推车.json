@@ -1,0 +1,16 @@
+{
+    "领取小推车": {
+        "recognition": "TemplateMatch",
+        "template": "领取小推车.png",
+        "action": "Click",
+        "next": ["小推车资源领取"],
+        "interrupt":["启动再等等"]
+    },
+    "小推车资源领取": {
+        "recognition": "TemplateMatch",
+        "template" : "小推车资源领取.png",
+        "action": "Click",
+        "next": ["用户切换_点击菜单"],
+        "interrupt":["启动再等等"]
+    }
+}

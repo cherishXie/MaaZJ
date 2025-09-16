@@ -1,0 +1,36 @@
+{
+    "FARM_每日签到":{
+        "recognition": "OCR",
+        "expected": "每日签到",
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_每日签到页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_每日签到页面":{
+        "recognition": "OCR",
+        "expected": "每日签到",
+        "roi" : [33,87,275,107],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next":["FARM_领取每日签到", "FARM_已领取每日签到"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取每日签到":{
+        "recognition": "OCR",
+        "expected": ["领取", "补签"],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_领取每日签到", "FARM_返回到主家园"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_已领取每日签到":{
+        "recognition": "OCR",
+        "expected": ["领取", "补签"],
+        "action": "Click",
+        "inverse": true,
+        "post_delay": 500,
+        "next":["FARM_返回到主家园"],
+        "interrupt":["启动再等等"]
+    }
+}

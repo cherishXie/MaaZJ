@@ -1,0 +1,30 @@
+{
+    "FARM_点击任务菜单":{
+        "recognition": "TemplateMatch",
+        "template": "任务菜单.png",
+        "action": "Click",
+        "next":["FARM_点击商城"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_任务": {
+        "recognition": "OCR",
+        "expected": "任务",
+        "action": "Click",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_日常任务列表"]
+    },
+    "FARM_任务返回1": {
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_任务返回2"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_任务返回2": {
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "interrupt":["启动再等等"],
+        "next": ["FARM_收经验", "FARM_无需收经验"]
+    }
+}

@@ -1,0 +1,63 @@
+{
+     "FARM_点击讨伐":{
+        "target": [570, 800, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_公会讨伐"],
+        "interrupt":["FARM_点击讨伐", "启动再等等"]
+    },
+    "FARM_公会讨伐":{
+        "recognition": "OCR",
+        "expected": "公会讨伐",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_讨伐次数0", "FARM_已击败讨伐", "FARM_进入讨伐"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_已击败讨伐":{
+        "recognition": "OCR",
+        "expected": "已击败",
+        "roi" : [230,939,286,98],
+        "target": [477, 881, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_已击败讨伐", "FARM_进入讨伐"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_讨伐次数0":{
+        "recognition": "OCR",
+        "expected": "0",
+        "roi" : [216,14,258,68],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next": ["FARM_退出讨伐"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入讨伐":{
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi" : [230,939,286,98],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_自动讨伐"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_自动讨伐":{
+        "recognition": "OCR",
+        "expected": ["开始战斗", "加入战斗"],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_退出讨伐"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_退出讨伐":{
+        "recognition": "TemplateMatch",
+        "template": "任务菜单.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_点击笔记", "FARM_退出讨伐"]
+    }
+}

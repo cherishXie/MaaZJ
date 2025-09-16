@@ -1,0 +1,22 @@
+{
+    "FARM_开始":{
+        "action": "DoNothing",
+        "next": ["FARM_点击杂货店"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点击主家园": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "action": "Click",
+        "next": ["FARM_精彩活动"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_返回主家园": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "target": [60, 1215, 0, 0],
+        "inverse": true,
+        "action": "Click",
+        "interrupt":["启动再等等"]
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "FARM_日常任务列表": {
+        "recognition": "OCR",
+        "expected": "日常任务",
+        "action": "DoNothing",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_日常任务", "FARM_无日常任务"]
+    },
+    "FARM_日常任务": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi" : [238,168,446,1102],
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_日常任务", "FARM_无日常任务"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_无日常任务": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "inverse": true,
+        "roi" : [238,168,446,1102],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next":["FARM_周任务"],
+        "interrupt":["启动再等等"]
+    }
+}

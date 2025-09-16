@@ -1,0 +1,92 @@
+{
+    "家园执行": {
+        "next": [
+            "家园开启盒子"
+        ]
+    },
+    "家园开启盒子":{
+        "recognition": "TemplateMatch",
+        "template": ["box_1.png", "box_2.png"],
+        "action": "Click",
+        "next": ["解锁家具"],
+        "interrupt": ["启动再等等"]
+    },
+    "解锁家具":{
+        "recognition": "OCR",
+        "expected": "解锁",
+        "action": "Click",
+        "roi" : [166,902,391,100],
+        "next": ["家园_点击空白处关闭"],
+        "interrupt": ["启动再等等"]
+    },
+    "家园_点击空白处关闭":{
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "interrupt": ["启动再等等"],
+        "next": ["家园_点击对话"]
+    },
+    "家园_点击对话" : {
+        "recognition": "TemplateMatch",
+        "template": "next.png",
+        "action": "Click",
+        "roi" : [286,1178,105,200],
+        "next": ["家园_点击对话", "家园_解锁小推车", "家园开启盒子"],
+        "interrupt": ["启动再等等"]
+    },
+    "家园_解锁小推车": {
+        "recognition": "TemplateMatch",
+        "template": "解锁小推车.png",
+        "action": "Click",
+        "roi" : [33,777,302,161],
+        "interrupt": ["启动再等等"],
+        "next": ["家园_点击对话"]
+    },
+    "家园_小推车解锁资源": {
+        "recognition": "OCR",
+        "expected": "解锁",
+        "action": "Click",
+        "roi" : [458,354,228,465],
+        "order_by": "Vertical",
+        "next": ["家园_小推车解锁资源", "家园_小推车解锁资源完成"],
+        "interrupt": ["启动再等等"]
+    },
+    "家园_小推车解锁资源完成": {
+        "recognition": "OCR",
+        "expected": "解锁",
+        "inverse": true,
+        "action": "DoNothing",
+        "roi" : [458,354,228,465],
+        "next": ["家园_小推车资源领取"],
+        "interrupt": ["启动再等等"]
+    },
+    "家园_小推车资源领取": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "next": ["家园-小推车获得奖励"],
+        "interrupt": ["启动再等等"]
+    },
+    "家园-小推车获得奖励":{
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "target": [208, 1220, 0, 0],
+        "interrupt": ["启动再等等"],
+        "next": ["家园-小推车获得奖励", "家园_点击对话"]
+    },
+    "家园打开仓库": {
+        "recognition": "TemplateMatch",
+        "template": "家园仓库.png",
+        "action": "Click",
+        "interrupt": ["启动再等等"],
+        "next": ["家园_点击对话"]
+    },
+    "家园点击返回":{
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["家园_点击对话"],
+        "interrupt":["启动再等等"]
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "FARM_秘宝大作战":{
+        "recognition": "OCR",
+        "expected": "秘宝大作战",
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_秘宝大作战页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_秘宝大作战页面": {
+        "recognition": "OCR",
+        "expected": "购买礼包获得",
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next":["FARM_领取秘宝", "FARM_已领取秘宝"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取秘宝": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "roi" : [479,583,228,579],
+        "post_delay": 1000,
+        "next":["FARM_秘宝大作战页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取秘宝弹窗": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "roi" : [203,804,321,122],
+        "post_delay": 500,
+        "next":["FARM_领取秘宝", "FARM_已领取秘宝"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_已领取秘宝": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "inverse": true,
+        "action": "DoNothing",
+        "roi" : [479,583,228,579],
+        "post_delay": 500,
+        "next": ["FARM_每日签到"],
+        "interrupt":["FARM_秘宝返回活动汇总", "执行滑动", "启动再等等"]
+    },
+    "FARM_秘宝返回活动汇总": {
+        "recognition": "OCR",
+        "expected": "活动汇总",
+        "roi" : [17,3,173,86],
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["启动再等等"]
+    }
+}

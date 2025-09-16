@@ -1,0 +1,77 @@
+{
+    "FARM_赛季预告":{
+        "recognition": "OCR",
+        "expected": "赛季预告",
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_赛季预告页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_赛季预告页面":{
+        "recognition": "OCR",
+        "expected": "位面联通",
+        "roi" : [583,19,119,101],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_位面联通页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_位面联通页面":{
+        "recognition": "OCR",
+        "expected": "活动结束前",
+        "roi" : [42,1008,337,103],
+        "target": [576, 1060, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_逢魔契约"],
+        "interrupt":["FARM_返回赛季预告", "启动再等等"]
+    },
+    "FARM_返回赛季预告":{
+        "recognition": "OCR",
+        "expected": "位面联通",
+        "inverse": true,
+        "roi" : [42,1008,337,103],
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_逢魔契约"],
+        "interrupt":["FARM_返回赛季预告", "启动再等等"]
+    },
+    "FARM_逢魔契约": {
+        "recognition": "TemplateMatch",
+        "template": "逢魔契约.png",
+        "roi" : [516,667,186,216],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_逢魔契约页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_逢魔契约页面": {
+        "recognition": "OCR",
+        "expected": "购买后立即",
+        "roi" : [21,263,233,73],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next":["FARM_领取免费逢魔契约"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取免费逢魔契约":{
+        "recognition": "OCR",
+        "expected": "领取",
+        "target": [639, 1034, 0, 0],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_每日签到"],
+        "interrupt":["FARM_逢魔返回到活动汇总", "执行滑动", "启动再等等"]
+    },
+    "FARM_逢魔返回到活动汇总":{
+        "recognition": "OCR",
+        "expected": "活动汇总",
+        "roi" : [17,3,173,86],
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["执行滑动", "启动再等等"]
+    }
+}

@@ -9,6 +9,7 @@ import my_reco
 
 def main():
     Toolkit.init_option("./")
+    print("--------- agent start ---------")
 
     socket_id = sys.argv[-1]
 

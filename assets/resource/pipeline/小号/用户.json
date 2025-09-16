@@ -1,0 +1,103 @@
+{
+    "用户切换_点击菜单": {
+        "recognition": "TemplateMatch",
+        "template": "任务菜单.png",
+        "action": "Click",
+        "next":["用户切换_点击用户"],
+        "interrupt":["用户切换_点击菜单", "启动再等等"]
+    },
+    "用户切换_点击绯乐":{
+        "recognition": "OCR",
+        "expected": "绯乐",
+        "action": "Click",
+        "next":["用户切换_点击菜单"],
+        "interrupt":["用户切换_点击绯乐", "启动再等等"]
+    },
+    "用户切换_点击用户": {
+        "recognition": "OCR",
+        "expected": "用户",
+        "action": "Click",
+        "post_delay": 300,
+        "next":["用户切换_点击账号中心"],
+        "interrupt":["用户切换_关闭公告", "用户切换_点击菜单", "用户切换_点击用户", "启动再等等"]
+    },
+    "用户切换_位面频道":{
+        "recognition": "OCR",
+        "expected": "位面频道",
+        "action": "Click",
+        "target": [42, 1220, 0, 0],
+        "post_delay": 500,
+        "next":["用户切换_点击菜单"],
+        "interrupt":["用户切换_位面频道", "启动再等等"]
+    },
+    "用户切换_关闭公告": {
+        "recognition": "OCR",
+        "expected": "公告",
+        "roi" : [279,57,172,68],
+        "action": "Click",
+        "target": [60, 1215, 0, 0],
+        "interrupt": ["启动再等等"]
+    },
+    "用户切换_点击账号中心": {
+        "recognition": "OCR",
+        "expected": "账号中心",
+        "action": "Click",
+        "post_delay": 300,
+        "next":["用户切换_点击切换账号"],
+        "interrupt":["用户切换_点击账号中心", "用户切换_点击雷霆账密登录", "启动再等等"]
+    },
+    "用户切换_点击切换账号": {
+        "recognition": "OCR",
+        "expected": "切换账号",
+        "action": "Click",
+        "post_delay": 300,
+        "next":["用户切换_点击雷霆账密登录"],
+        "interrupt":["用户切换_点击切换账号", "启动再等等"]
+    },
+    "用户切换_点击雷霆账密登录": {
+        "recognition": "OCR",
+        "expected": "雷霆账密登录",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["用户流水线终止"]
+    },
+    "用户流水线终止": {
+        "action": "StopTask"
+    },
+    "用户执行滑动": {
+        "action": "Swipe",
+        "begin": [400, 680, 0, 0],
+        "duration": 1500,
+        "post_wait_freezes": 1500
+    },
+    "用户切换_账号列表":{
+        "recognition": "OCR",
+        "expected": "雷霆账号登录",
+        "target": [590, 600, 0, 0],
+        "action": "Click",
+        "next":["用户切换_选择账号"],
+        "post_delay": 1000,
+        "interrupt":["用户执行滑动", "启动再等等"]
+    },
+    "用户切换_选择账号": {
+        "recognition": "OCR",
+        "expected": "19292464450",
+        "action": "Click",
+        "next":["用户切换_同意协议"],
+        "interrupt":["启动再等等"]
+    },
+    "用户切换_同意协议": {
+        "target": [101, 793, 0, 0],
+        "action": "Click",
+        "next":["用户切换_点击登录"],
+        "interrupt":["启动再等等"]
+    },
+    "用户切换_点击登录": {
+        "recognition": "OCR",
+        "expected": "雷霆账号登录",
+        "action": "Click",
+        "next":["sub_启动杖剑传说官_关闭公告", "sub_启动杖剑传说官_切换服务器"],
+        "interrupt":["启动再等等"]
+    }
+    
+}

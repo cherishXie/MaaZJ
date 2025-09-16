@@ -1,0 +1,80 @@
+{
+    "FARM_点击巡礼之证":{
+        "recognition": "OCR",
+        "expected": "巡礼之证",
+        "action": "Click",
+        "next":["FARM_点巡礼之证页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点巡礼之证页面":{
+        "recognition": "OCR",
+        "expected": "巡礼目标",
+        "action": "Click",
+        "post_delay": 1000,
+        "next":["FARM_每日巡礼之证", "FARM_每周巡礼之证"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_每日巡礼之证": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi" : [477,381,196,626],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_每日巡礼之证", "FARM_每周巡礼之证"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_每周巡礼之证": {
+        "recognition": "OCR",
+        "expected": "每周目标",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_领取每周巡礼之证", "FARM_本期巡礼之证"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取每周巡礼之证": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi" : [477,381,196,626],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_领取每周巡礼之证", "FARM_本期巡礼之证"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_本期巡礼之证": {
+        "recognition": "OCR",
+        "expected": "本期目标",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_领取本期巡礼之证"],
+        "interrupt":["FARM_已领取本期巡礼之证", "启动再等等"]
+    },
+    "FARM_领取本期巡礼之证": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi" : [477,381,196,626],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_领取本期巡礼之证"],
+        "interrupt":["FARM_巡礼返回到活动列表", "启动再等等"]
+    },
+    "FARM_已领取本期巡礼之证": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "inverse": true,
+        "roi" : [477,381,196,626],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_巡礼返回到活动列表"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_巡礼返回到活动列表":{
+        "recognition": "OCR",
+        "expected": "超值精选",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "next": ["FARM_点击每日特惠"],
+        "interrupt":["执行滑动", "启动再等等"]
+    },
+}

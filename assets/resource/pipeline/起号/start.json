@@ -1,0 +1,76 @@
+{
+    "开始起号": {
+        "action": "DoNothing",
+        "next": [
+            "需要点击继续",
+            "选择体型",
+            "sub_选择体型_下一步"
+        ],
+        "interrupt": ["sub_启动杖剑传说官_点击开始", "启动再等等"],
+        "on_error":["开始起号"]
+    },
+    "需要点击继续": {
+        "recognition": "TemplateMatch",
+        "template": "next.png",
+        "action": "Click",
+        "roi" : [286,1178,105,200],
+        "next": ["开始起号"]
+    },
+    "需要点击对话":{
+        "recognition": "TemplateMatch",
+        "template": "continue.png",
+        "action": "Click",
+        "next": ["开始起号"],
+        "roi" : [50,920,161,131],
+        "interrupt": ["启动再等等"]
+    },
+    "选择体型": {
+        "recognition": "OCR",
+        "expected": "选择体型",
+        "roi" : [264,66,160,78],
+        "next": [
+            "sub_选择体型_下一步"
+        ],
+        "on_error":["开始起号"]
+    },
+    "sub_选择体型_下一步": {
+        "recognition": "OCR",
+        "roi" : [167,1109,423,129],
+        "expected": "下一步",
+        "replace": ["ー", "一"],
+        "action": "Click",
+        "next": [
+            "sub_选择体型_下一步",
+            "sub_选择体型_输入名字",
+            "开始起号"
+        ]
+    },
+    "sub_选择体型_输入名字": {
+        "recognition": "OCR",
+        "expected": "请输入你的名字",
+        "action": "Click",
+        "input_text": "李一",
+        "roi" : [175,961,303,160],
+        "next": [
+            "sub_选择体型_输入指定名字"
+        ]
+    },
+    "sub_选择体型_输入指定名字": {
+        "action": "InputText",
+        "input_text": "李一",
+        "next": [
+            "sub_选择体型_开始冒险"
+        ]
+    },
+    "sub_选择体型_开始冒险": {
+        "recognition": "OCR",
+        "roi" : [177,1119,408,121],
+        "expected": "开始冒险",
+        "replace": ["ー", "一"],
+        "action": "Click",
+        "next": [
+            "sub_选择体型_下一步",
+            "开始起号"
+        ]
+    }
+}

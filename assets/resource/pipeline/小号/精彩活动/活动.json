@@ -1,0 +1,38 @@
+{
+    "FARM_精彩活动":{
+        "recognition": "OCR",
+        "expected": "精彩活动",
+        "roi" : [597,105,108,110],
+        "action": "Click",
+        "next":["FARM_活动汇总"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_活动汇总":{
+        "recognition": "OCR",
+        "expected": "活动汇总",
+        "roi" : [17,3,173,86],
+        "action": "DoNothing",
+        "next":["FARM_赛季预告", "FARM_秘宝大作战", "FARM_每日签到"],
+        "interrupt":["执行滑动", "启动再等等"]
+    },
+    "FARM_返回到活动汇总":{
+        "recognition": "OCR",
+        "expected": "活动汇总",
+        "roi" : [17,3,173,86],
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["FARM_返回到活动汇总", "启动再等等"]
+    },
+    "FARM_返回到主家园":{
+        "recognition": "TemplateMatch",
+        "template": "任务菜单.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_点击任务菜单", "FARM_返回到主家园"]
+    }
+}

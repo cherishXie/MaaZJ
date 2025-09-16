@@ -1,0 +1,75 @@
+{
+  "启动游戏版本": {
+    "next": [
+      "杖剑传说官服"
+    ]
+  },
+  "启动再等等": {
+    "post_delay": 1000
+  },
+  "杖剑传说官服": {
+    "next": [
+      "sub_启动杖剑传说官"
+    ],
+    "interrupt": ["启动再等等"],
+    "focus": "启动杖剑传说官服"
+  },
+  "sub_启动杖剑传说官": {
+    "action": "StartApp",
+    "package": "com.leiting.zjcs",
+    "next": [
+      "sub_启动杖剑传说官_关闭公告",
+      "sub_启动杖剑传说官_切换服务器"
+    ],
+    "interrupt": ["启动再等等"]
+  },
+  "sub_启动杖剑传说官_关闭公告": {
+    "recognition": "OCR",
+    "expected": "公告",
+    "roi" : [279,57,172,68],
+    "action": "Click",
+    "target": [60, 1215, 0, 0],
+    "next": [
+      "sub_启动杖剑传说官_选择服务器",
+      "sub_启动杖剑传说官_切换服务器"
+    ],
+    "interrupt": ["sub_启动杖剑传说官_关闭公告", "启动再等等"]
+  },
+  "sub_启动杖剑传说官_切换服务器": {
+    "recognition": "OCR",
+    "roi" : [609,29,91,86],
+    "expected": "服务器",
+    "action": "Click",
+    "next": [
+      "sub_启动杖剑传说官_选择服务器"
+    ],
+    "interrupt": ["sub_启动杖剑传说官_关闭公告", "启动再等等"]
+  },
+  "sub_启动杖剑传说官_选择服务器": {
+    "recognition": "OCR",
+    "expected": "晶",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [
+      "sub_启动杖剑传说官_点击开始"
+    ],
+    "interrupt": ["执行滑动", "启动再等等"]
+  },
+  "执行滑动": {
+    "action": "Swipe",
+    "begin": [300, 330, 0, 0],
+    "duration": 500,
+    "post_wait_freezes": 1000
+  },
+  "sub_启动杖剑传说官_点击开始": {
+    "recognition": "OCR",
+    "expected": "点击任意处开始游戏",
+    "action": "Click",
+    "interrupt": ["启动再等等"],
+    "next":["FARM_点击杂货店"]
+  },
+  "sub_关闭杖剑传说官": {
+    "action": "StopApp",
+    "package": "com.leiting.zjcs"
+  }
+}
