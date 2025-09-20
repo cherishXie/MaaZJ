@@ -12,7 +12,7 @@
         "expected": "活动汇总",
         "roi" : [17,3,173,86],
         "action": "DoNothing",
-        "next":["FARM_赛季预告", "FARM_秘宝大作战", "FARM_每日签到"],
+        "next":["FARM_赛季预告", "FARM_每日签到"],
         "interrupt":["执行滑动", "启动再等等"]
     },
     "FARM_返回到活动汇总":{

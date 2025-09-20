@@ -92,8 +92,8 @@
         "recognition": "TemplateMatch",
         "template": ["怪物-野猪.png", "怪物-野猪2.png", "怪物-野猪3.png", "怪物-野猪4.png", "怪物-野猪5.png"],
         "action": "Click",
-        "post_delay": 1200,
-        "roi" : [198,170,521,720],
+        "post_delay": 1000,
+        "roi" : [24,110,695,872],
         "next": ["FARM_体力不足", "FARM_打野猪", "FARM_关闭自身", "FARM_找不到野猪"]
     },
     "FARM_循环打野猪":{
@@ -106,8 +106,8 @@
         "template": ["怪物-野猪.png", "怪物-野猪2.png", "怪物-野猪3.png", "怪物-野猪4.png", "怪物-野猪5.png"],
         "action": "Click",
         "inverse": true,
-        "post_delay": 1500,
-        "roi" : [198,170,521,720],
+        "post_delay": 2500,
+        "roi" : [24,110,695,872],
         "next": ["FARM_打野猪", "FARM_世界返回家园"]
     },
     "FARM_关闭自身": {

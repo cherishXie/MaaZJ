@@ -81,7 +81,7 @@
     },
     "用户切换_选择账号": {
         "recognition": "OCR",
-        "expected": "19292464450",
+        "expected": "xxxx",
         "action": "Click",
         "next":["用户切换_同意协议"],
         "interrupt":["启动再等等"]
@@ -96,6 +96,7 @@
         "recognition": "OCR",
         "expected": "雷霆账号登录",
         "action": "Click",
+        "post_delay": 1500,
         "next":["sub_启动杖剑传说官_关闭公告", "sub_启动杖剑传说官_切换服务器"],
         "interrupt":["启动再等等"]
     }

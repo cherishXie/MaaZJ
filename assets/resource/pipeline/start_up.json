@@ -18,8 +18,7 @@
     "action": "StartApp",
     "package": "com.leiting.zjcs",
     "next": [
-      "sub_启动杖剑传说官_关闭公告",
-      "sub_启动杖剑传说官_切换服务器"
+      "用户切换_点击雷霆账密登录"
     ],
     "interrupt": ["启动再等等"]
   },
@@ -47,7 +46,7 @@
   },
   "sub_启动杖剑传说官_选择服务器": {
     "recognition": "OCR",
-    "expected": "晶",
+    "expected": "xxx",
     "action": "Click",
     "post_delay": 1000,
     "next": [
