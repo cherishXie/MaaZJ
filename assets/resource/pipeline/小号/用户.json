@@ -3,32 +3,43 @@
         "recognition": "TemplateMatch",
         "template": "任务菜单.png",
         "action": "Click",
-        "next":["用户切换_点击用户"],
-        "interrupt":["用户切换_点击菜单", "启动再等等"]
+        "post_delay": 500,
+        "next":["用户切换_菜单页面", "用户切换_聊天频道"],
+        "interrupt":["用户切换_点击菜单", "用户切换_关闭公告", "启动再等等"]
     },
     "用户切换_点击绯乐":{
         "recognition": "OCR",
         "expected": "绯乐",
         "action": "Click",
+        "post_delay": 500,
         "next":["用户切换_点击菜单"],
         "interrupt":["用户切换_点击绯乐", "启动再等等"]
+    },
+    "用户切换_菜单页面": {
+        "recognition": "TemplateMatch",
+        "template": "用户icon.png",
+        "action": "DoNothing",
+        "next":["用户切换_点击用户"],
+        "roi" : [29,874,658,307],
+        "post_delay": 500,
+        "interrupt":["用户切换_关闭公告", "启动再等等"]
     },
     "用户切换_点击用户": {
         "recognition": "OCR",
         "expected": "用户",
         "action": "Click",
-        "post_delay": 300,
+        "post_delay": 500,
         "next":["用户切换_点击账号中心"],
         "interrupt":["用户切换_关闭公告", "用户切换_点击菜单", "用户切换_点击用户", "启动再等等"]
     },
-    "用户切换_位面频道":{
+    "用户切换_聊天频道":{
         "recognition": "OCR",
-        "expected": "位面频道",
+        "expected": ["位面频道", "界域频道"],
         "action": "Click",
         "target": [42, 1220, 0, 0],
         "post_delay": 500,
         "next":["用户切换_点击菜单"],
-        "interrupt":["用户切换_位面频道", "启动再等等"]
+        "interrupt":["用户切换_聊天频道", "启动再等等"]
     },
     "用户切换_关闭公告": {
         "recognition": "OCR",
@@ -81,7 +92,7 @@
     },
     "用户切换_选择账号": {
         "recognition": "OCR",
-        "expected": "xxxx",
+        "expected": "19521466084",
         "action": "Click",
         "next":["用户切换_同意协议"],
         "interrupt":["启动再等等"]
@@ -96,8 +107,7 @@
         "recognition": "OCR",
         "expected": "雷霆账号登录",
         "action": "Click",
-        "post_delay": 1500,
-        "next":["sub_启动杖剑传说官_关闭公告", "sub_启动杖剑传说官_切换服务器"],
+        "next":["sub_启动杖剑传说官_关闭公告"],
         "interrupt":["启动再等等"]
     }
     

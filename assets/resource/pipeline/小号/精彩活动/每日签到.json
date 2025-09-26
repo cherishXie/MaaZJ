@@ -3,6 +3,7 @@
         "recognition": "OCR",
         "expected": "每日签到",
         "action": "Click",
+        "order_by": "Vertical",
         "post_delay": 500,
         "next":["FARM_每日签到页面"],
         "interrupt":["启动再等等"]

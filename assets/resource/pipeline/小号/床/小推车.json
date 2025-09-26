@@ -8,7 +8,8 @@
     },
     "小推车资源领取": {
         "recognition": "TemplateMatch",
-        "template" : "小推车资源领取.png",
+        "template" : ["小推车资源领取.png", "小推车晚上.png", "小推车白天.png"],
+        "roi" : [187,655,333,331],
         "action": "Click",
         "next": ["用户切换_点击菜单"],
         "interrupt":["启动再等等"]

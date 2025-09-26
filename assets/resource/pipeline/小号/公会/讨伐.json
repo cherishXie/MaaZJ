@@ -1,10 +1,12 @@
 {
      "FARM_点击讨伐":{
+        "recognition": "TemplateMatch",
+        "template": ["远征之门.png", "远征之门2.png",  "远征之门3.png"],
         "target": [570, 800, 0, 0],
         "action": "Click",
         "post_delay": 1000,
         "next": ["FARM_公会讨伐"],
-        "interrupt":["FARM_点击讨伐", "启动再等等"]
+        "interrupt":["FARM_空白处关闭", "FARM_点击讨伐", "启动再等等"]
     },
     "FARM_公会讨伐":{
         "recognition": "OCR",
@@ -12,7 +14,7 @@
         "action": "Click",
         "post_delay": 500,
         "next": ["FARM_讨伐次数0", "FARM_已击败讨伐", "FARM_进入讨伐"],
-        "interrupt":["启动再等等"]
+        "interrupt":["FARM_空白处关闭", "FARM_点击讨伐", "启动再等等"]
     },
      "FARM_已击败讨伐":{
         "recognition": "OCR",

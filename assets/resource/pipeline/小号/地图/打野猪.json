@@ -18,7 +18,16 @@
         "recognition": "OCR",
         "expected": "森之国",
         "action": "Click",
-        "next": ["FARM_到达森之国"],
+        "next": ["FARM_混沌点击绯乐", "FARM_到达森之国"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_混沌点击绯乐":{
+        "recognition": "OCR",
+        "expected": "绯乐",
+        "action": "Click",
+        "roi" : [22,446,651,616],
+        "next": ["FARM_混沌点击绯乐", "FARM_到达森之国"],
+        "post_delay": 1000,
         "interrupt":["启动再等等"]
     },
     "FARM_到达森之国":{
@@ -45,8 +54,8 @@
     },
     "FARM_寻找森之国二": {
         "action": "DoNothing",
-        "next": ["FARM_定位到森之国二"],
-        "interrupt":["执行横向右滑动", "执行横向下滑动", "启动再等等"]
+        "next": ["FARM_定位到森之国二", "FARM_定位到森之国一"],
+        "interrupt":["执行横向右滑动", "启动再等等"]
     },
     "FARM_定位到森之国二": {
         "recognition": "TemplateMatch",
@@ -57,6 +66,14 @@
         "next": ["FARM_返回到地图中"],
         "interrupt":["启动再等等"]
     },
+    "FARM_定位到森之国一": {
+        "recognition": "TemplateMatch",
+        "template": "森之国一.png",
+        "action": "DoNothing",
+        "threshold": 0.9,
+        "next": ["FARM_定位到森之国二"],
+        "interrupt":["执行横向下滑动", "启动再等等"]
+    },
     "FARM_返回到地图中": {
         "target": [60, 1215, 0, 0],
         "action": "Click",
@@ -66,18 +83,18 @@
     },
     "执行横向左滑动": {
         "action": "Swipe",
-        "begin": [405, 800, 0, 0],
-        "end": [655, 800, 0, 0],
+        "begin": [355, 800, 0, 0],
+        "end": [755, 800, 0, 0],
         "duration": 500,
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 200,
         "interrupt":["启动再等等"]
     },
     "执行横向右滑动": {
         "action": "Swipe",
-        "begin": [455, 800, 0, 0],
+        "begin": [605, 800, 0, 0],
         "end": [250, 800, 0, 0],
         "duration": 500,
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 200,
         "interrupt":["启动再等等"]
     },
      "执行横向下滑动": {
@@ -85,7 +102,7 @@
         "begin": [400, 600, 0, 0],
         "end": [400, 400, 0, 0],
         "duration": 500,
-        "post_delay": 1000,
+        "post_delay": 500,
         "interrupt":["启动再等等"]
     },
     "FARM_打野猪":{
@@ -94,7 +111,7 @@
         "action": "Click",
         "post_delay": 1000,
         "roi" : [24,110,695,872],
-        "next": ["FARM_体力不足", "FARM_打野猪", "FARM_关闭自身", "FARM_找不到野猪"]
+        "next": ["FARM_体力不足", "FARM_AUTO", "FARM_打野猪", "FARM_关闭自身", "FARM_找不到野猪"]
     },
     "FARM_循环打野猪":{
         "timeout": 10000,
@@ -131,5 +148,56 @@
         "post_delay": 1000,
         "next": ["FARM_点击公会"],
         "interrupt":["FARM_世界返回家园", "启动再等等"]
+    },
+    "FARM_AUTO": {
+        "recognition": "TemplateMatch",
+        "template": "auto.png",
+        "action": "Click",
+        "next": ["FARM_托管页面"],
+        "interrupt":["FARM_AUTO", "启动再等等"]
+    },
+    "FARM_托管页面":{
+        "recognition": "OCR",
+        "expected": "托管",
+        "roi" : [270,382,177,93],
+        "action": "DoNothing",
+        "next": ["FARM_体力不足", "FARM_托管页面体力不足", "FARM_托管增加次数"],
+        "interrupt":["FARM_AUTO", "启动再等等"]
+    },
+    "FARM_托管增加次数":{
+        "recognition": "TemplateMatch",
+        "template": "auto_add.png",
+        "threshold": 0.8,
+        "roi" : [477,816,122,119],
+        "action": "Click",
+        "next": ["FARM_达到指定托管次数"],
+        "interrupt":["FARM_托管增加次数", "启动再等等"]
+    },
+    "FARM_达到指定托管次数":{
+        "recognition": "OCR",
+        "expected": ["10", "16", "22", "28", "30"],
+        "roi" : [295,844,133,63],
+        "next": ["FARM_开始托管"]
+    },
+    "FARM_开始托管": {
+        "recognition": "OCR",
+        "expected": "开始托管",
+        "action": "Click",
+        "next": ["FARM_AUTO"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_托管体力不足": {
+        "recognition": "OCR",
+        "expected": "^[0-4]$",
+        "roi" : [619,35,26,33],
+        "next": ["FARM_AUTO"]
+    },
+    "FARM_托管页面体力不足": {
+        "recognition": "ColorMatch",
+        "upper" : [225,100,100],
+        "lower" : [225,100,100],
+        "roi" : [498,702,33,36],
+        "method" : 4,
+        "next": ["FARM_世界返回家园"]
     }
 }
