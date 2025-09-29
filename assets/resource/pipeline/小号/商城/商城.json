@@ -10,7 +10,7 @@
         "recognition": "OCR",
         "expected": "超值精选",
         "action": "DoNothing",
-        "next":["FARM_启程好礼", "FARM_无启程好礼"],
+        "next":["FARM_点击幻装1", "FARM_点击幻装2", "FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
         "interrupt": ["启动再等等"]
     },
     "FARM_返回到活动列表":{
@@ -23,14 +23,21 @@
         "interrupt":["执行滑动", "启动再等等"],
         "next": ["FARM_点击每日特惠", "FARM_返回到活动列表"]
     },
-    "FARM_返回任务界面": {
-        "recognition": "OCR",
-        "expected": "任务",
+    "FARM_返回主家园": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
         "inverse": true,
         "target": [60, 1215, 0, 0],
         "post_delay": 1000,
         "action": "Click",
         "interrupt":["启动再等等"],
-        "next": ["FARM_任务", "FARM_返回任务界面"]
+        "next": ["FARM_家园主界面", "FARM_返回主家园"]
+    },
+    "FARM_家园主界面": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "action": "DoNothing",
+        "interrupt":["启动再等等"],
+        "next": ["FARM_收经验", "FARM_无需收经验"]
     }
 }

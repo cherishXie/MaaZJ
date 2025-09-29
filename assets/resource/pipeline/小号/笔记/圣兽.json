@@ -1,0 +1,72 @@
+{
+    "FARM_点击每日活动":{
+        "recognition": "TemplateMatch",
+        "template": "每日活动.png",
+        "roi" : [428,705,196,100],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_进入每日活动"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入每日活动": {
+        "recognition": "OCR",
+        "expected": "圣兽",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_进入圣兽页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入圣兽页面": {
+        "recognition": "OCR",
+        "expected": ["排行榜"],
+        "action": "DoNothing",
+        "next": ["FARM_匹配圣兽"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_匹配圣兽": {
+        "recognition": "TemplateMatch",
+        "template": "匹配按钮.png",
+        "action": "Click",
+        "next": ["FARM_圣兽结算伤害"],
+        "interrupt":["FARM_接受匹配", "FARM_匹配圣兽", "启动再等等"]
+    },
+    "FARM_接受匹配": {
+        "recognition": "OCR",
+        "expected": ["接受"],
+        "action": "Click",
+        "interrupt":["启动再等等"]
+    },
+    "FARM_圣兽结算伤害": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": ["FARM_圣兽领取页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_圣兽领取页面": {
+        "recognition": "OCR",
+        "expected": ["排行榜"],
+        "roi" : [5,965,707,305],
+        "action": "DoNothing",
+        "next": ["FARM_圣兽领取奖励", "FARM_返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_圣兽领取奖励": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "roi" : [29,848,669,161],
+        "action": "Click",
+        "next": ["FARM_返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_返回笔记首页": {
+        "recognition": "TemplateMatch", 
+        "template" : "笔记.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击幻想阶梯"],
+        "interrupt":["FARM_返回笔记首页", "启动再等等"]
+    }
+}

@@ -5,13 +5,13 @@
         "action": "Click",
         "next":["FARM_领取本周精选", "FARM_本周精选已领取"],
         "timeout": 20000,
-        "on_error": "FARM_返回任务界面"
+        "on_error": "FARM_返回主家园"
     },
     "FARM_领取本周精选":{
         "recognition": "OCR",
         "expected": "每周赠礼",
         "action": "Click",
-        "next":["FARM_返回任务界面"],
+        "next":["FARM_返回主家园"],
         "interrupt":["启动再等等"]
     },
     "FARM_本周精选已领取":{
@@ -19,7 +19,7 @@
         "expected": ["已领取", "领取"],
         "action": "DoNothing",
         "replace": ["巴", "已"],
-        "next":["FARM_返回任务界面"],
+        "next":["FARM_返回主家园"],
         "interrupt":["启动再等等"]
     }
 }

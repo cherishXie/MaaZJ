@@ -59,7 +59,7 @@
     },
     "FARM_定位到森之国二": {
         "recognition": "TemplateMatch",
-        "template": "森之国二.png",
+        "template": ["森之国二.png", "森之国二2.png"],
         "threshold": 0.9,
         "target_offset": [75, 170, 0, 0],
         "action": "Click",
@@ -110,6 +110,7 @@
         "template": ["怪物-野猪.png", "怪物-野猪2.png", "怪物-野猪3.png", "怪物-野猪4.png", "怪物-野猪5.png"],
         "action": "Click",
         "post_delay": 1000,
+        "order_by": "Vertical",
         "roi" : [24,110,695,872],
         "next": ["FARM_体力不足", "FARM_AUTO", "FARM_打野猪", "FARM_关闭自身", "FARM_找不到野猪"]
     },

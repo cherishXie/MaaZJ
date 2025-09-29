@@ -10,18 +10,25 @@
     "FARM_公会界面":{
         "recognition": "OCR",
         "expected": ["公会大厅", "会大"],
-        "action": "Click",
-        "target": [600, 960, 0 , 0],
+        "action": "DoNothing",
+        "roi" : [126,407,358,342],
         "post_delay": 500,
-        "next": ["FARM_公会币挂机详情", "FARM_点击讨伐"],
+        "next": ["FARM_领取公会币"],
+        "interrupt":["FARM_空白处关闭", "启动再等等"]
+    },
+    "FARM_领取公会币":{
+        "action": "Click",
+        "target": [611, 967, 0, 0],
+        "post_delay": 500,
+        "next": ["FARM_公会币挂机详情", "FARM_捐赠公会"],
         "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
     "FARM_公会币挂机详情":{
         "recognition": "OCR",
-        "expected": ["挂机详情", "挂机结束"],
+        "expected": ["挂机详情", "挂机结束", "获得奖励"],
         "action": "Click",
         "target": [160, 228, 0, 0],
-        "next": ["FARM_点击讨伐"],
+        "next": ["FARM_捐赠公会"],
         "post_delay": 300,
         "interrupt":["FARM_领取公会币挂机详情", "FARM_空白处关闭", "启动再等等"]
     },
@@ -42,7 +49,50 @@
     },
     "FARM_空白处关闭":{
         "recognition": "OCR",
-        "expected": ["空白处", "获得", "奖励", "领取"],
-        "action": "Click"
+        "expected": ["空白处", "获得", "奖励", "领取", "公会币"],
+        "action": "Click",
+        "target": [26, 121, 0, 0]
+    },
+    "FARM_捐赠公会": {
+        "recognition": "OCR",
+        "expected": ["公会大厅", "会大"],
+        "action": "Click",
+        "next": ["FARM_捐赠公会页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_捐赠公会页面": {
+        "recognition": "OCR",
+        "expected": ["公会捐赠"],
+        "action": "Click",
+        "next": ["FARM_捐赠页面", "FARM_捐赠公会页面"],
+        "roi" : [8,986,684,179],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_捐赠页面": {
+        "recognition": "OCR",
+        "expected": ["公会捐赠"],
+        "roi" : [223,210,258,61],
+        "action": "DoNothing",
+        "next": ["FARM_免费捐赠", "FARM_返回到公会大厅"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_免费捐赠": {
+        "recognition": "OCR",
+        "expected": ["免费捐赠"],
+        "roi" : [238,900,268,84],
+        "action": "Click",
+        "next": ["FARM_返回到公会大厅"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_返回到公会大厅": {
+        "recognition": "OCR",
+        "expected": ["公会大厅", "会大"],
+        "roi" : [126,407,358,342],
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击讨伐"],
+        "interrupt":["FARM_返回到公会大厅", "启动再等等"]
     }
 }

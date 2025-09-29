@@ -30,7 +30,7 @@
         "roi" : [238,168,446,1102],
         "action": "DoNothing",
         "post_delay": 200,
-        "next":["FARM_任务返回1"],
+        "next":["FARM_点击委托", "FARM_任务返回"],
         "interrupt":["启动再等等"]
     }
 }

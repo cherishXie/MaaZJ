@@ -1,0 +1,82 @@
+{
+    "FARM_点击竞技":{
+        "recognition": "OCR",
+        "expected": "竞技",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_进入竞技"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入竞技": {
+        "recognition": "OCR",
+        "expected": "竞技场",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_竞技场结算页面", "FARM_进入竞技场页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_竞技场结算页面": {
+        "recognition": "OCR",
+        "expected": ["开启挑战"],
+        "action": "Click",
+        "next": ["FARM_进入竞技场页面"],
+        "post_delay": 1000,
+        "interrupt":["启动再等等"]
+    },
+    "FARM_进入竞技场页面": {
+        "recognition": "OCR",
+        "expected": ["选择对手"],
+        "action": "DoNothing",
+        "next": ["FARM_选择对手"],
+        "post_delay": 1000,
+        "interrupt":["启动再等等"]
+    },
+    "FARM_选择对手": {
+        "recognition": "TemplateMatch",
+        "template": "挑战对手.png",
+        "action": "Click",
+        "next": ["FARM_挑战对手页面"],
+        "post_delay": 1000,
+        "interrupt":["FARM_选择对手", "启动再等等"]
+    },
+    "FARM_挑战对手页面": {
+        "recognition": "OCR",
+        "expected": ["排位挑战"],
+        "roi" : [252,231,205,80],
+        "action": "DoNothing",
+        "next": ["FARM_挑战对手"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_挑战对手": {
+        "recognition": "OCR",
+        "expected": ["挑战"],
+        "action": "Click",
+        "roi" : [263,869,184,57],
+        "next": ["FARM_挑战开始战斗"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_挑战开始战斗": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "action": "Click",
+        "next": ["FARM_挑战结算页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_挑战结算页面": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": ["FARM_竞技返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_竞技返回笔记首页": {
+        "recognition": "TemplateMatch", 
+        "template" : "笔记.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击素材秘境", "FARM_点击每日活动", "FARM_点击幻想阶梯"],
+        "interrupt":["FARM_竞技返回笔记首页", "启动再等等"]
+    }
+}

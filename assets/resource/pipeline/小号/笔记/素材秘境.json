@@ -1,0 +1,242 @@
+{
+    "FARM_点击素材秘境": {
+        "recognition": "OCR",
+        "expected": "素材秘境",
+        "action": "Click",
+        "post_delay": 1000,
+        "roi" : [0,923,360,250],
+        "next": ["FARM_素材秘境页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_素材秘境页面": {
+        "recognition": "OCR",
+        "expected": "素材秘境",
+        "action": "DoNothing",
+        "roi" : [1,1,498,121],
+        "next": ["FARM_点击铁矿"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_点击铁矿": {
+        "recognition": "OCR",
+        "expected": "铁石",
+        "action": "Click",
+        "next": ["FARM_铁矿页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_铁矿页面": {
+        "recognition": "OCR",
+        "expected": "铁石",
+        "action": "Click",
+        "roi" : [129,1141,553,136],
+        "next": ["FARM_铁矿点击买次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_铁矿点击买次数": {
+        "action": "Click",
+        "target": [686, 50, 0, 0],
+        "next": ["FARM_铁矿买次数页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_铁矿买次数页面": {
+        "recognition": "OCR",
+        "expected": "购买铁矿锤",
+        "action": "DoNothing",
+        "roi" : [179,305,360,89],
+        "next": ["FARM_铁矿增加次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_铁矿增加次数":{
+        "recognition": "TemplateMatch",
+        "template": "auto_add.png",
+        "threshold": 0.8,
+        "roi" : [482,644,112,107],
+        "action": "Click",
+        "next": ["FARM_铁矿买到指定次数"],
+        "interrupt":["FARM_铁矿增加次数", "启动再等等"]
+    },
+    "FARM_铁矿买到指定次数": {
+        "recognition": "OCR",
+        "expected": ["2"],
+        "roi" : [280,651,156,87],
+        "next": ["FARM_购买铁矿"]
+    },
+    "FARM_购买铁矿": {
+        "recognition": "TemplateMatch",
+        "template": "购买素材.png",
+        "action": "Click",
+        "next": ["FARM_点击黄金", "FARM_点击怪物", "FARM_点击砂石"],
+        "interrupt":["FARM_返回到素材秘境页面", "启动再等等"]
+    },
+    "FARM_点击黄金": {
+        "recognition": "OCR",
+        "expected": "黄金",
+        "action": "Click",
+        "next": ["FARM_黄金页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_黄金页面": {
+        "recognition": "OCR",
+        "expected": "黄金",
+        "action": "Click",
+        "roi" : [129,1141,553,136],
+        "next": ["FARM_黄金点击买次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_黄金点击买次数": {
+         "action": "Click",
+        "target": [686, 50, 0, 0],
+        "next": ["FARM_黄金买次数页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_黄金买次数页面": {
+        "recognition": "OCR",
+        "expected": "购买金矿",
+        "action": "DoNothing",
+        "roi" : [179,305,360,89],
+        "next": ["FARM_黄金增加次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_黄金增加次数":{
+        "recognition": "TemplateMatch",
+        "template": "auto_add.png",
+        "threshold": 0.8,
+        "roi" : [482,644,112,107],
+        "action": "Click",
+        "next": ["FARM_黄金买到指定次数"],
+        "interrupt":["FARM_黄金增加次数", "启动再等等"]
+    },
+    "FARM_黄金买到指定次数": {
+        "recognition": "OCR",
+        "expected": ["2"],
+        "roi" : [280,651,156,87],
+        "next": ["FARM_购买黄金"]
+    },
+    "FARM_购买黄金": {
+        "recognition": "TemplateMatch",
+        "template": "购买素材.png",
+        "action": "Click",
+        "next": ["FARM_点击怪物", "FARM_点击砂石"],
+        "interrupt":["FARM_返回到素材秘境页面", "启动再等等"]
+    },
+    "FARM_点击怪物": {
+        "recognition": "OCR",
+        "expected": "怪物",
+        "action": "Click",
+        "next": ["FARM_怪物页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_怪物页面": {
+        "recognition": "OCR",
+        "expected": "怪物",
+        "action": "Click",
+        "roi" : [129,1141,553,136],
+        "next": ["FARM_怪物点击买次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_怪物点击买次数": {
+         "action": "Click",
+        "target": [686, 50, 0, 0],
+        "next": ["FARM_怪物买次数页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_怪物买次数页面": {
+        "recognition": "OCR",
+        "expected": "购买陈旧",
+        "action": "DoNothing",
+        "roi" : [179,305,360,89],
+        "next": ["FARM_怪物增加次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_怪物增加次数":{
+        "recognition": "TemplateMatch",
+        "template": "auto_add.png",
+        "threshold": 0.8,
+        "roi" : [482,644,112,107],
+        "action": "Click",
+        "next": ["FARM_怪物买到指定次数"],
+        "interrupt":["FARM_怪物增加次数", "启动再等等"]
+    },
+    "FARM_怪物买到指定次数": {
+        "recognition": "OCR",
+        "expected": ["2"],
+        "roi" : [280,651,156,87],
+        "next": ["FARM_购买怪物"]
+    },
+    "FARM_购买怪物": {
+        "recognition": "TemplateMatch",
+        "template": "购买素材.png",
+        "action": "DoNothing",
+        "next": ["FARM_点击砂石", "FARM_素材秘境返回笔记首页"],
+        "interrupt":["FARM_返回到素材秘境页面", "启动再等等"]
+    },
+    "FARM_点击砂石": {
+        "recognition": "OCR",
+        "expected": "砂石",
+        "action": "Click",
+        "next": ["FARM_砂石页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_砂石页面": {
+        "recognition": "OCR",
+        "expected": "砂石",
+        "action": "Click",
+        "roi" : [129,1141,553,136],
+        "next": ["FARM_砂石点击买次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_砂石点击买次数": {
+         "action": "Click",
+        "target": [686, 50, 0, 0],
+        "next": ["FARM_砂石买次数页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_砂石买次数页面": {
+        "recognition": "OCR",
+        "expected": "购买砂矿",
+        "action": "DoNothing",
+        "roi" : [179,305,360,89],
+        "next": ["FARM_砂石增加次数"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_砂石增加次数":{
+        "recognition": "TemplateMatch",
+        "template": "auto_add.png",
+        "threshold": 0.8,
+        "roi" : [482,644,112,107],
+        "action": "Click",
+        "next": ["FARM_砂石买到指定次数"],
+        "interrupt":["FARM_砂石增加次数", "启动再等等"]
+    },
+    "FARM_砂石买到指定次数": {
+        "recognition": "OCR",
+        "expected": ["2"],
+        "roi" : [280,651,156,87],
+        "next": ["FARM_购买砂石"]
+    },
+    "FARM_购买砂石": {
+        "recognition": "TemplateMatch",
+        "template": "购买素材.png",
+        "action": "Click",
+        "next": ["FARM_素材秘境返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_返回到素材秘境页面": {
+        "recognition": "TemplateMatch",
+        "template": "素材秘境-铁石.png",
+        "roi" : [1,1,498,121],
+        "action": "Click",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_素材秘境返回笔记首页": {
+        "recognition": "TemplateMatch", 
+        "template" : "笔记.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击每日活动", "FARM_点击幻想阶梯"],
+        "interrupt":["FARM_素材秘境返回笔记首页", "启动再等等"]
+    }
+}

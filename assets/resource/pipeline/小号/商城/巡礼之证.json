@@ -3,7 +3,25 @@
         "recognition": "OCR",
         "expected": "巡礼之证",
         "action": "Click",
-        "next":["FARM_点巡礼之证页面"],
+        "next":["FARM_巡礼之证页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_巡礼之证页面": {
+        "recognition": "OCR",
+        "expected": "当前经验",
+        "roi" : [135,214,238,101],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_领取巡礼奖励", "FARM_点巡礼之证页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_领取巡礼奖励": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "roi" : [141,346,214,693],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_点巡礼之证页面"],
         "interrupt": ["启动再等等"]
     },
     "FARM_点巡礼之证页面":{
@@ -11,8 +29,17 @@
         "expected": "巡礼目标",
         "action": "Click",
         "post_delay": 1000,
-        "next":["FARM_每日巡礼之证", "FARM_每周巡礼之证"],
+        "next":["FARM_每日巡礼之证页面", "FARM_点巡礼之证页面"],
         "interrupt":["启动再等等"]
+    },
+    "FARM_每日巡礼之证页面": {
+        "recognition": "OCR",
+        "expected": ["每日目标"],
+        "roi" : [17,1064,649,94],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_每日巡礼之证", "FARM_每周巡礼之证"],
+        "interrupt": ["启动再等等"]
     },
     "FARM_每日巡礼之证": {
         "recognition": "OCR",

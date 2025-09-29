@@ -2,7 +2,7 @@
     "FARM_点击杂货店":{
         "recognition": "TemplateMatch",
         "template": ["杂货店.png", "杂货店_晚上.png"],
-        "roi": [290,701,252,222],
+        "roi" : [219,691,410,272],
         "action": "Click",
         "post_wait_freezes": 1000,
         "next": ["FARM_杂货店商店"]
@@ -41,14 +41,31 @@
         "expected": "宝库",
         "action": "Click",
         "post_wait_freezes": 1000,
-        "next": ["FARM_宝库购买体力", "启动再等等"]
+        "next": ["FARM_宝库购买体力"],
+        "interrupt":["启动再等等"]
     },
     "FARM_宝库购买体力": {
         "recognition": "OCR",
         "expected": "免费",
         "action": "Click",
         "post_wait_freezes": 1000,
-        "next": ["FARM_宝库返回", "启动再等等"]
+        "next": ["FARM_宝库返回"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_宝库购买限购":{
+        "recognition": "OCR",
+        "expected": "限购",
+        "action": "Click",
+        "roi" : [24,173,442,844],
+        "target_offset": [
+            0,
+            25,
+            0,
+            0
+        ],
+        "post_delay": 1000,
+        "next": ["FARM_宝库购买限购", "FARM_宝库返回"],
+        "interrupt":["FARM_找不到商店", "启动再等等"]
     },
     "FARM_宝库返回": {
         "target": [60, 1215, 0, 0],

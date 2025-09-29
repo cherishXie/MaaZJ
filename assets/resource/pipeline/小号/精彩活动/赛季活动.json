@@ -1,0 +1,149 @@
+{
+    "FARM_点击赛季活动": {
+        "recognition": "OCR",
+        "expected": ["赛季活动"],
+        "action": "Click",
+        "next": ["FARM_赛季活动页面"],
+        "post_delay": 500,
+        "interrupt": ["FARM_点击赛季活动", "启动再等等"]
+    },
+    "FARM_赛季活动页面": {
+        "recognition": "TemplateMatch",
+        "template": "S1赛季.png",
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_赛季签到"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_赛季签到": {
+        "recognition": "TemplateMatch",
+        "template": "逢魔灵签.png",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_赛季签到页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_赛季签到页面": {
+        "recognition": "OCR",
+        "expected": "进行中",
+        "roi" : [31,323,122,63],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_领取赛季签到", "FARM_签到返回到赛季页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_领取赛季签到": {
+        "recognition": "OCR",
+        "expected": ["领取", "补签"],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_签到返回到赛季页面"],
+        "interrupt": ["启动再等等"]
+    },
+     "FARM_签到返回到赛季页面": {
+        "recognition": "TemplateMatch",
+        "template": "S1赛季.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "next": ["FARM_点击妖灵手札"],
+        "post_delay": 1000,
+        "interrupt":["FARM_签到返回到赛季页面", "启动再等等"]
+    },
+    "FARM_点击妖灵手札": {
+        "recognition": "TemplateMatch",
+        "template": "妖灵手札.png",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_妖灵手札页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_妖灵手札页面": {
+        "recognition": "OCR",
+        "expected": "当前经验",
+        "roi" : [135,214,238,101],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_领取妖灵手札", "FARM_点击妖灵手札目标"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_领取妖灵手札": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "roi" : [141,346,214,693],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_点击妖灵手札目标"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点击妖灵手札目标": {
+        "recognition": "OCR",
+        "expected": "手札目标",
+        "action": "Click",
+        "next": ["FARM_手札目标页面", "FARM_点击妖灵手札目标"],
+        "post_delay": 500,
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_手札目标页面": {
+        "recognition": "OCR",
+        "expected": ["每日目标"],
+        "roi" : [17,1064,649,94],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_每日领取手札", "FARM_点击妖灵手札每周目标"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_每日领取手札": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "roi" : [460,335,235,646],
+        "post_delay": 500,
+        "next": ["FARM_每日领取手札", "FARM_点击妖灵手札每周目标"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点击妖灵手札每周目标": {
+        "recognition": "OCR",
+        "expected": "每周目标",
+        "action": "Click",
+        "next": ["FARM_每周领取手札", "FARM_点击妖灵手札本期目标"],
+        "post_delay": 500,
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_每周领取手札": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "roi" : [460,335,235,646],
+        "post_delay": 500,
+        "next": ["FARM_每周领取手札", "FARM_点击妖灵手札本期目标"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点击妖灵手札本期目标": {
+        "recognition": "OCR",
+        "expected": "本期目标",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_本期领取手札", "FARM_返回到赛季页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_本期领取手札": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "post_delay": 500,
+        "roi" : [460,335,235,646],
+        "next": ["FARM_本期领取手札", "FARM_返回到赛季页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_返回到赛季页面": {
+        "recognition": "TemplateMatch",
+        "template": "S1赛季.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_秘宝大作战", "FARM_每日签到"],
+        "interrupt":["FARM_返回到活动汇总", "启动再等等"]
+    }
+}

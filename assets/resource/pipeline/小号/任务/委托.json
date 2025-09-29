@@ -1,0 +1,43 @@
+{
+    "FARM_点击委托": {
+        "recognition": "OCR",
+        "expected": ["委托"],
+        "roi" : [24,1146,679,133],
+        "action": "Click",
+        "next": ["FARM_委托页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_委托页面": {
+        "recognition": "OCR",
+        "expected": ["委托任务"],
+        "roi" : [10,1,709,168],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next": ["FARM_无委托可提交", "FARM_委托可提交"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_委托可提交":{
+        "recognition": "TemplateMatch",
+        "template": "委托可提交.png",
+        "roi" : [15,166,704,983],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_委托好感度关闭", "FARM_委托可提交", "FARM_委托页面"],
+        "interrupt": ["FARM_空白处关闭", "启动再等等"]
+    },
+    "FARM_无委托可提交":{
+        "recognition": "TemplateMatch",
+        "template": "委托可提交.png",
+        "roi" : [15,166,704,983],
+        "action": "DoNothing",
+        "inverse": true,
+        "next": ["FARM_委托好感度关闭", "FARM_任务返回"],
+        "interrupt": ["FARM_空白处关闭", "启动再等等"]
+    },
+    "FARM_委托好感度关闭": {
+        "recognition": "OCR",
+        "expected": ["空白处", "获得", "领取", "取消"],
+        "action": "Click",
+        "next": ["FARM_委托页面"]
+    }
+}
