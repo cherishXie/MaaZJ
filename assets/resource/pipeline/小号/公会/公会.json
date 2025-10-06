@@ -29,14 +29,14 @@
         "action": "Click",
         "target": [160, 228, 0, 0],
         "next": ["FARM_捐赠公会"],
-        "post_delay": 300,
+        "post_delay": 500,
         "interrupt":["FARM_领取公会币挂机详情", "FARM_空白处关闭", "启动再等等"]
     },
     "FARM_领取公会币挂机详情":{
         "recognition": "OCR",
         "expected": "领取",
         "action": "Click",
-        "post_delay": 300,
+        "post_delay": 500,
         "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
     "FARM_无公会": {
@@ -57,16 +57,16 @@
         "recognition": "OCR",
         "expected": ["公会大厅", "会大"],
         "action": "Click",
-        "next": ["FARM_捐赠公会页面"],
-        "interrupt":["启动再等等"]
+        "next": ["FARM_捐赠公会页面", "FARM_捐赠公会"],
+        "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
     "FARM_捐赠公会页面": {
         "recognition": "OCR",
         "expected": ["公会捐赠"],
         "action": "Click",
-        "next": ["FARM_捐赠页面", "FARM_捐赠公会页面"],
+        "next": ["FARM_捐赠页面", "FARM_捐赠公会页面", "FARM_捐赠公会"],
         "roi" : [8,986,684,179],
-        "interrupt":["启动再等等"]
+        "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
     "FARM_捐赠页面": {
         "recognition": "OCR",

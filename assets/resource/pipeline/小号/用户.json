@@ -92,7 +92,7 @@
     },
     "用户切换_选择账号": {
         "recognition": "OCR",
-        "expected": "19521466084",
+        "expected": "17701717598",
         "action": "Click",
         "next":["用户切换_同意协议"],
         "interrupt":["启动再等等"]

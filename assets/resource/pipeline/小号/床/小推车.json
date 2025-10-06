@@ -3,7 +3,7 @@
         "recognition": "TemplateMatch",
         "template": "领取小推车.png",
         "action": "Click",
-        "post_delay": 1500,
+        "post_delay": 3000,
         "next": ["苹果树领取", "小推车资源领取", "用户切换_点击菜单"],
         "interrupt":["启动再等等"]
     },
@@ -12,6 +12,7 @@
         "template" : ["小推车资源领取.png", "小推车晚上.png", "小推车白天.png"],
         "roi" : [14,465,705,507],
         "action": "Click",
+        "post_delay": 500,
         "next": ["用户切换_点击菜单"],
         "interrupt":["启动再等等"]
     },
@@ -20,6 +21,7 @@
         "template": ["苹果树.png", "苹果树白天.png"],
         "threshold": 0.85,
         "action": "Click",
+        "post_delay": 500,
         "next": ["小推车资源领取", "用户切换_点击菜单"],
         "interrupt":["启动再等等"]
     }

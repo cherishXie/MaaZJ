@@ -144,6 +144,6 @@
         "action": "Click",
         "post_delay": 1000,
         "next": ["FARM_秘宝大作战", "FARM_每日签到"],
-        "interrupt":["FARM_返回到活动汇总", "启动再等等"]
+        "interrupt":["FARM_返回到活动汇总", "执行滑动", "启动再等等"]
     }
 }

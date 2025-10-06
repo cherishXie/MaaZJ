@@ -10,7 +10,8 @@
         "recognition": "OCR",
         "expected": "超值精选",
         "action": "DoNothing",
-        "next":["FARM_点击幻装1", "FARM_点击幻装2", "FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
+        // "next":["FARM_点击幻装1", "FARM_点击幻装2", "FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
+        "next":["FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
         "interrupt": ["启动再等等"]
     },
     "FARM_返回到活动列表":{
