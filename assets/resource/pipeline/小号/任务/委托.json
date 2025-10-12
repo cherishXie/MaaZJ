@@ -36,7 +36,7 @@
     },
     "FARM_委托好感度关闭": {
         "recognition": "OCR",
-        "expected": ["空白处", "获得", "领取", "取消"],
+        "expected": ["空白处", "获得", "领取", "取消", "一键提交"],
         "action": "Click",
         "next": ["FARM_委托页面"]
     }

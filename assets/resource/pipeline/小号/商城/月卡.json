@@ -1,0 +1,35 @@
+{
+    "FARM_判断是否有月卡": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "roi" : [344,1123,173,149],
+        "next": ["FARM_月卡页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_月卡页面": {
+        "recognition": "OCR",
+        "expected": "月卡",
+        "roi" : [17,10,207,101],
+        "action": "DoNothing",
+        "next": ["FARM_点击领取月卡"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_点击领取月卡": {
+        "recognition": "OCR",
+        "expected": ["领取"],
+        "roi" : [419,424,265,640],
+        "action": "Click",
+        "next": ["FARM_点击领取月卡", "FARM_返回主家园"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_无需领取月卡": {
+        "recognition": "OCR",
+        "expected": ["领取"],
+        "roi" : [419,424,265,640],
+        "inverse": true,
+        "action": "DoNothing",
+        "next": ["FARM_返回主家园"],
+        "interrupt": ["启动再等等"]
+    }
+}

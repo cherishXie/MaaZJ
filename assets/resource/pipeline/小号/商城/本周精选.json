@@ -11,7 +11,7 @@
         "recognition": "OCR",
         "expected": "每周赠礼",
         "action": "Click",
-        "next":["FARM_返回主家园"],
+        "next":["FARM_本周精选返回到活动列表"],
         "interrupt":["启动再等等"]
     },
     "FARM_本周精选已领取":{
@@ -19,7 +19,17 @@
         "expected": ["已领取", "领取"],
         "action": "DoNothing",
         "replace": ["巴", "已"],
-        "next":["FARM_返回主家园"],
+        "next":["FARM_本周精选返回到活动列表"],
         "interrupt":["启动再等等"]
+    },
+    "FARM_本周精选返回到活动列表":{
+        "recognition": "OCR",
+        "expected": "超值精选",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["执行滑动", "启动再等等"],
+        "next": ["FARM_判断是否有月卡", "FARM_本周精选返回到活动列表", "FARM_返回主家园"]
     }
 }

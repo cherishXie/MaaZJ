@@ -1,0 +1,100 @@
+{
+    "FARM_寻找公会商店": {
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["FARM_点击公会商店"],
+        "interrupt": ["执行横向右滑动", "启动再等等"]
+    },
+    "FARM_点击公会商店": {
+        "recognition": "OCR",
+        "expected": ["商店"],
+        "target_offset": [
+            0,
+            -50,
+            0,
+            0
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_公会商店页面"],
+        "interrupt": ["执行横向右滑动", "启动再等等"]
+    },
+    "FARM_公会商店页面": {
+        "recognition": "OCR",
+        "expected": "商店",
+        "roi" : [8,7,349,143],
+        "action": "DoNothing",
+        "next": ["FARM_公会商店宠物抽", "FARM_公会商店打折羊", "FARM_公会商店打折鸡", "FARM_公会商店返回"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_找不到公会商店":{
+        "recognition": "OCR",
+        "expected": "商店",
+        "roi" : [8,7,349,143],
+        "inverse": true,
+        "action": "Click"
+    },
+    "FARM_公会商店宠物抽": {
+        "recognition": "TemplateMatch",
+        "template": ["商店宠物抽.png"],
+        "action": "Click",
+        "threshold": 0.9,
+        "target_offset": [
+            0,
+            100,
+            0,
+            0
+        ],
+        "post_delay": 200,
+        "next": ["FARM_公会币不足", "FARM_公会商店宠物抽", "FARM_公会商店打折羊", "FARM_公会商店打折鸡"],
+        "interrupt": ["FARM_找不到公会商店", "启动再等等"]
+    },
+    "FARM_公会商店打折羊": {
+    "recognition": "TemplateMatch",
+        "template": ["打折羊.png", "打折羊2.png"],
+        "action": "Click",
+        "threshold": 0.9,
+        "target_offset": [
+            0,
+            100,
+            0,
+            0
+        ],
+        "post_delay": 200,
+        "next": ["FARM_公会币不足", "FARM_公会商店打折羊", "FARM_公会商店打折鸡"],
+        "interrupt": ["FARM_找不到公会商店", "启动再等等"]
+    },
+    "FARM_公会商店打折鸡": {
+        "recognition": "TemplateMatch",
+        "template": ["打折鸡.png", "打折鸡2.png"],
+        "action": "Click",
+        "threshold": 0.9,
+        "target_offset": [
+            0,
+            100,
+            0,
+            0
+        ],
+        "post_delay": 200,
+        "next": ["FARM_公会币不足", "FARM_公会商店打折鸡", "FARM_公会商店返回"],
+        "interrupt": ["FARM_找不到公会商店", "启动再等等"]
+    },
+    "FARM_公会币不足": {
+        "recognition": "OCR",
+        "expected": "公会币不足",
+        "action": "DoNothing",
+        "next": ["FARM_公会商店返回"],
+        "interrupt": ["FARM_找不到公会商店", "启动再等等"]
+    },
+    "FARM_公会商店返回": {
+        "recognition": "OCR",
+        "expected": ["公会大厅", "会大"],
+        "roi" : [126,407,358,342],
+        "inverse": true,
+        "action": "Click",
+        "target": [60, 1215, 0, 0],
+        "post_delay": 500,
+        "next": ["FARM_点击笔记"],
+        "interrupt": ["FARM_公会商店返回", "启动再等等"]
+    }
+}

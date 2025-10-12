@@ -1,94 +1,64 @@
 {
-    "检测是否在世界树副本门口":{
+    "开始刷友情点":{
         "recognition": "OCR",
         "expected": "世界树",
         "action": "DoNothing",
-        "roi" : [518,226,184,108],
+        "roi" : [511,149,200,168],
         "post_delay": 300,
-        "next": ["点击世界树副本", "点击接受", "等待加载"]
+        "next": ["点击世界树副本", "点击接受"],
+        "interrupt": ["点击准备", "启动再等等"]
     },
     "点击世界树副本": {
+        "recognition": "TemplateMatch",
+        "template": "世界树.png",
         "action": "Click",
-        "target": [340, 415, 0, 0],
-        "next": ["进入副本", "点击接受"],
-        "post_delay": 500,
-        "on_error": ["检测是否在世界树副本门口"]
+        "next": ["世界树副本页面", "点击接受"],
+        "post_delay": 300,
+        "interrupt": ["点击世界树副本", "启动再等等"]
     },
-    "进入副本":{
+    "世界树副本页面":{
         "recognition": "OCR",
         "expected": "进入副本",
+        "roi" : [50,997,653,145],
         "action": "Click",
-        "roi" : [381,1032,316,105],
-        "next": ["战斗状态1"],
-        "on_error": ["检测是否在世界树副本门口"]
+        "next": ["世界树副本页面", "点击接受", "战斗结束"],
+        "interrupt": ["开始刷友情点", "点击准备", "启动再等等"]
     },
-    "点击准备": {
-        "recognition": "OCR",
-        "expected": "取消准备",
-        "inverse": true,
-        "action": "Click",
-        "roi": [
-            275,
-            935,
-            200,
-            150
-        ],
-        "target": [325, 935, 0, 0],
-        "on_error": ["检测是否在世界树副本门口"],
-        "next": ["战斗状态1"]
-    },
-    "战斗状态1":{
-        "post_delay": 2000,
-        "next": ["战斗结束", "进入副本", "点击接受", "检测是否在世界树副本门口", "战斗状态2"]
-    },
-    "战斗状态2":{
-        "post_delay": 2000,
-        "next": ["战斗结束", "进入副本", "点击接受", "检测是否在世界树副本门口", "战斗状态1"]
+    "点击准备":{
+        "recognition": "TemplateMatch",
+        "template": "准备按钮.png",
+        "action": "Click"
     },
     "战斗结束": {
         "recognition": "OCR",
-        "expected": "领取奖励",
-        "action": "Click",
-        "roi": [
-            475,
-            1185,
-            200,
-            60
-        ],
+        "expected": ["掉落奖励"],
+        "action": "DoNothing",
         "next":["点击退出"],
-        "on_error": ["检测是否在世界树副本门口"]
+        "post_delay": 300,
+        "interrupt": ["点击接受", "启动再等等"]
     },
     "点击退出": {
         "action": "Click",
         "target": [60, 1215, 0, 0],
-        "post_delay": 500,
-        "next":["确定退出"]
+        "post_delay": 300,
+        "roi" : [107,324,540,593],
+        "next":["开始刷友情点"],
+        "interrupt": ["确定退出", "点击退出", "启动再等等"]
     },
     "确定退出":{
         "recognition": "OCR",
         "expected": "确定",
         "action": "Click",
-        "next": ["等待加载"]
+        "post_delay": 300,
+        "roi" : [35,419,662,518],
+        "interrupt": ["启动再等等"]
     },
     "点击接受": {
-        "recognition": "OCR",
-        "expected": "接受",
+        "recognition": "TemplateMatch",
+        "template": "接受按钮.png",
         "action": "Click",
-        "roi": [
-            370,
-            925,
-            300,
-            300
-        ],
-        "next": ["战斗状态1"],
-        "on_error": ["检测是否在世界树副本门口"]
-    },
-    "等待加载":{
-        "post_delay": 1000,
-        "next": ["检测是否在世界树副本门口", "等待加载2"]
-    },
-    "等待加载2":{
-        "post_delay": 1000,
-        "next": ["检测是否在世界树副本门口", "等待加载"]
+        "roi" : [360,1050,324,119],
+        "interrupt": ["启动再等等"],
+        "next": ["战斗结束"]
     }
 }

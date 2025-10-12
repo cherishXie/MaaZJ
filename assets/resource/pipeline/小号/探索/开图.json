@@ -1,0 +1,67 @@
+{
+    "FARM_检查任务为探索": {
+        "recognition": "OCR",
+        "expected": "探索",
+        "roi" : [12,972,258,79],
+        "action": "DoNothing",
+        "next": ["FARM_检查任务已开启定位", "FARM_检查任务未开启定位"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_检查任务已开启定位": {
+        "recognition": "ColorMatch",
+        "upper" : [203,207,96],
+        "lower" : [203,207,96],
+        "roi" : [244,1006,11,11],
+        "method" : 4,
+        "action": "DoNothing",
+        "next": ["探索_寻找定位标志"],
+        "interrupt": ["执行横向下滑动", "启动再等等"]
+    },
+    "FARM_检查任务未开启定位": {
+        "recognition": "ColorMatch",
+        "upper" : [79,79,79],
+        "lower" : [79,79,79],
+        "roi" : [244,1006,11,11],
+        "method" : 4,
+        "action": "Click",
+        "next": ["探索_寻找定位标志"],
+        "interrupt": ["执行横向下滑动", "启动再等等"]
+    },
+    "探索_寻找定位标志": {
+        "recognition": "TemplateMatch",
+        "template": "定位标志.png",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": ["探索_跳转定位标志", "探索_寻找定位标志"],
+        "interrupt": ["执行横向下滑动", "启动再等等"]
+    },
+    "探索_跳转定位标志": {
+        "recognition": "TemplateMatch",
+        "template": "定位标志.png",
+        "roi" : [66,258,579,721],
+        "target_offset": [
+            0,
+            70,
+            0,
+            0
+        ],
+        "action": "Click",
+        "next": ["探索_定位目标神庙", "探索_寻找定位标志", "探索_跳转定位标志"],
+        "interrupt": ["执行横向下滑动", "启动再等等"]
+    },
+    "探索_定位目标神庙": {
+        "recognition": "TemplateMatch",
+        "template": "神庙.png",
+        "roi" : [0,245,720,716],
+        "action": "DoNothing",
+        "next": ["探索_神庙已探索", "探索_点击神庙"],
+        "interrupt": ["启动再等等"]
+    },
+     "探索_中间按钮": {
+        "recognition": "OCR",
+        "roi" : [0,117,714,934],
+        "expected": ["开始战斗", "确定", "下一层", "战斗胜利", "战斗失败"],
+        "action": "Click",
+        "interrupt": ["启动再等等"]
+    }
+}

@@ -29,7 +29,7 @@
         "template": "家园图标.png",
         "inverse": true,
         "target": [60, 1215, 0, 0],
-        "post_delay": 1000,
+        "post_delay": 500,
         "action": "Click",
         "interrupt":["启动再等等"],
         "next": ["FARM_家园主界面", "FARM_返回主家园"]

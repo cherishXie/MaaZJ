@@ -92,13 +92,14 @@
         "interrupt":["启动再等等"]
     },
     "FARM_退出讨伐":{
-        "recognition": "TemplateMatch",
-        "template": "任务菜单.png",
+        "recognition": "OCR",
+        "expected": ["公会大厅", "会大"],
+        "roi" : [126,407,358,342],
         "inverse": true,
         "target": [60, 1215, 0, 0],
         "post_delay": 500,
         "action": "Click",
         "interrupt":["启动再等等"],
-        "next": ["FARM_点击笔记", "FARM_退出讨伐"]
+        "next": ["FARM_退出讨伐", "FARM_寻找公会商店"]
     }
 }

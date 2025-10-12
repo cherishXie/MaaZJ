@@ -12,7 +12,7 @@
         "template": "S1赛季.png",
         "action": "DoNothing",
         "post_delay": 500,
-        "next": ["FARM_赛季签到"],
+        "next": ["FARM_点击妖灵手札"],
         "interrupt": ["启动再等等"]
     },
     "FARM_赛季签到": {

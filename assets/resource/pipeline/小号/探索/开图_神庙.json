@@ -1,0 +1,32 @@
+{
+    "探索_神庙已探索": {
+        "recognition": "OCR",
+        "expected": "已经被彻底探索过的遗迹",
+        "roi" : [5,224,709,539],
+        "action": "DoNothing",
+        "next": ["FARM_检查任务为探索"],
+        "interrupt": ["启动再等等"]
+    },
+    "探索_点击神庙": {
+        "recognition": "TemplateMatch",
+        "template": "神庙.png",
+        "action": "Click",
+        "next": ["探索_神庙页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "探索_神庙页面": {
+        "recognition": "OCR",
+        "expected": "神庙遗迹",
+        "action": "DoNothing",
+        "next": ["探索_探索神庙"],
+        "interrupt": ["启动再等等"]
+    },
+    "探索_探索神庙": {
+        "recognition": "OCR",
+        "expected": "探索",
+        "action": "Click",
+        "post_delay": 1500,
+        "next": ["FARM_检查任务为探索"],
+        "interrupt": ["探索_中间按钮", "启动再等等"]
+    }
+}
