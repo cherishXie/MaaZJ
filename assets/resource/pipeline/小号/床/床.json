@@ -3,23 +3,26 @@
         "recognition": "TemplateMatch",
         "template": ["收经验.png"],
         "action": "Click",
-        "interrupt":["启动再等等"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"],
         "next": ["FARM_点击床", "判断是否有新邮件", "领取小推车", "用户切换_点击菜单"]
+        // "next": ["判断是否有新邮件", "领取小推车", "用户切换_点击菜单"]
     },
     "FARM_无需收经验": {
         "recognition": "TemplateMatch",
         "template": ["收经验.png"],
         "inverse": true,
         "action": "DoNothing",
-        "interrupt":["启动再等等"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"],
         "next": ["判断是否有新邮件", "领取小推车", "用户切换_点击菜单"]
     },
     "FARM_点击床":{
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
         "target": [360, 619, 0, 0],
         "action": "Click",
         "post_delay": 500,
-        "next": ["FARM_床页面"],
-        "interrupt":["FARM_点击床", "升级礼包弹窗", "启动再等等"]
+        "next": ["FARM_床页面", "FARM_点击床"],
+        "interrupt":["FARM_关闭推送", "升级礼包弹窗", "礼包弹窗", "启动再等等"]
     },
     "FARM_床页面": {
         "recognition": "OCR",
@@ -28,14 +31,14 @@
         "action": "DoNothing",
         "post_delay": 500,
         "next": ["FARM_今日免费加速"],
-        "interrupt":["升级礼包弹窗", "启动再等等"]
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"]
     },
     "FARM_今日免费加速":{
         "target": [360, 619, 0, 0],
         "action": "Click",
         "post_delay": 1000,
         "next": ["FARM_领取今日免费加速", "FARM_无今日免费加速"],
-        "interrupt":["启动再等等"]
+        "interrupt":["启动再等等", "礼包弹窗", "升级礼包弹窗"]
     },
     "FARM_领取今日免费加速":{
         "recognition": "OCR",
@@ -43,14 +46,14 @@
         "action": "Click",
         "post_delay": 3000,
         "next": ["FARM_小推车超出限制", "判断是否有新邮件", "领取小推车", "用户切换_点击菜单"],
-        "interrupt":["启动再等等"]
+        "interrupt":["启动再等等", "礼包弹窗", "升级礼包弹窗"]
     },
     "FARM_小推车超出限制":{
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": ["确定", "大地图"],
         "action": "Click",
-        "post_delay": 300,
-        "next": ["判断是否有新邮件", "领取小推车", "用户切换_点击菜单"],
+        "post_delay": 1000,
+        "next": ["FARM_小推车超出限制", "判断是否有新邮件", "领取小推车", "用户切换_点击菜单"],
         "interrupt":["启动再等等"]
     },
     "FARM_无今日免费加速":{
@@ -63,15 +66,24 @@
         "interrupt":["启动再等等"]
     },
     "升级礼包弹窗":{
+        "recognition": "OCR",
+        "expected": ["确定", "领取", "空白处", "关闭"],
         "action": "Click",
-        "target": [60, 160, 0, 0],
         "post_delay": 1000,
+        "interrupt":["启动再等等"]
+    },
+    "礼包弹窗":{
+        "recognition": "OCR",
+        "expected": ["适度娱乐", "理性消费"],
+        "action": "Click",
+        "post_delay": 1000,
+        "target": [15, 345, 0, 0],
         "interrupt":["启动再等等"]
     },
     "FARM_床返回": {
         "action": "Click",
         "target": [15, 345, 0, 0],
         "next": ["判断是否有新邮件", "领取小推车", "用户切换_点击菜单"],
-        "interrupt": ["FARM_床返回", "启动再等等"]
+        "interrupt": ["升级礼包弹窗", "礼包弹窗", "FARM_床返回", "启动再等等"]
     }
 }

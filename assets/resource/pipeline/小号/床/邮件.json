@@ -2,7 +2,8 @@
     "判断是否有新邮件": {
         "recognition": "TemplateMatch",
         "template": "红点.png",
-        "roi" : [3,445,168,182],
+        // "roi" : [3,445,168,182],
+        "roi" : [3,405,228,386],
         "action": "Click",
         "post_delay": 1000,
         "next": ["FARM_邮件页面"],
@@ -13,7 +14,7 @@
         "expected": "信件",
         "roi" : [244,168,233,77],
         "action": "DoNothing",
-        "post_delay": 200,
+        "post_delay": 500,
         "next": ["FARM_领取邮件", "FARM_无需领取邮件"],
         "interrupt": ["启动再等等"]
     },
@@ -22,7 +23,7 @@
         "expected": ["领取", "一键"],
         "roi" : [84,962,554,128],
         "action": "Click",
-        "post_delay": 200,
+        "post_delay": 500,
         "next": ["FARM_邮件返回"],
         "interrupt": ["启动再等等"]
     },
@@ -31,7 +32,7 @@
         "expected": ["领取", "一键"],
         "inverse": true,
         "roi" : [84,962,554,128],
-        "post_delay": 200,
+        "post_delay": 500,
         "action": "Click",
         "next": ["FARM_邮件返回"],
         "interrupt": ["启动再等等"]
@@ -39,8 +40,9 @@
     "FARM_邮件返回": {
         "action": "Click",
         "target": [15, 345, 0, 0],
-        "post_delay": 200,
+        "post_delay": 1000,
         "next": ["领取小推车", "用户切换_点击菜单"],
         "interrupt": ["FARM_邮件返回", "启动再等等"]
     }
 }
+

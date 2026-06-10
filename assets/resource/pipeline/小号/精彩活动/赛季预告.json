@@ -10,7 +10,7 @@
     "FARM_赛季预告页面":{
         "recognition": "OCR",
         "expected": "位面联通",
-        "roi" : [583,19,119,101],
+        "roi" : [565,15,154,208],
         "action": "Click",
         "post_delay": 500,
         "next":["FARM_位面联通页面"],
@@ -23,7 +23,7 @@
         "target": [576, 1060, 0, 0],
         "action": "Click",
         "post_delay": 1000,
-        "next":["FARM_逢魔契约"],
+        "next":["FARM_赛季礼包"],
         "interrupt":["FARM_返回赛季预告", "启动再等等"]
     },
     "FARM_返回赛季预告":{
@@ -34,34 +34,34 @@
         "target": [60, 1215, 0, 0],
         "action": "Click",
         "post_delay": 500,
-        "next": ["FARM_逢魔契约"],
+        "next": ["FARM_赛季礼包"],
         "interrupt":["FARM_返回赛季预告", "启动再等等"]
     },
-    "FARM_逢魔契约": {
+    "FARM_赛季礼包": {
         "recognition": "TemplateMatch",
-        "template": "逢魔契约.png",
+        "template": ["希冀之光.png", "逢魔契约.png", "S2赛季礼包.png"],
         "roi" : [516,667,186,216],
         "action": "Click",
         "post_delay": 500,
-        "next":["FARM_逢魔契约页面"],
+        "next":["FARM_赛季礼包页面"],
         "interrupt":["启动再等等"]
     },
-    "FARM_逢魔契约页面": {
+    "FARM_赛季礼包页面": {
         "recognition": "OCR",
         "expected": "购买后立即",
-        "roi" : [21,263,233,73],
+        "roi" : [52,122,630,800],
         "action": "DoNothing",
         "post_delay": 500,
-        "next":["FARM_领取免费逢魔契约"],
+        "next":["FARM_领取免费赛季礼包"],
         "interrupt":["启动再等等"]
     },
-    "FARM_领取免费逢魔契约":{
+    "FARM_领取免费赛季礼包":{
         "recognition": "OCR",
         "expected": "领取",
         "target": [639, 1034, 0, 0],
         "action": "Click",
         "post_delay": 500,
-        "next":["FARM_每日签到"],
+        "next":["FARM_秘宝大作战"],
         "interrupt":["FARM_逢魔返回到活动汇总", "执行滑动", "启动再等等"]
     },
     "FARM_逢魔返回到活动汇总":{

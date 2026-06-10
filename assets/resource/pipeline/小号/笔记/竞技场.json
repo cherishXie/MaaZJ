@@ -17,7 +17,7 @@
     },
     "FARM_竞技场结算页面": {
         "recognition": "OCR",
-        "expected": ["开启挑战"],
+        "expected": ["开启挑战", "获得奖励"],
         "action": "Click",
         "post_delay": 1000,
         "interrupt":["启动再等等"]
@@ -28,7 +28,7 @@
         "action": "DoNothing",
         "next": ["FARM_选择对手"],
         "post_delay": 1000,
-        "interrupt":["启动再等等"]
+        "interrupt":["FARM_竞技场结算页面", "启动再等等"]
     },
     "FARM_选择对手": {
         "recognition": "TemplateMatch",
@@ -48,10 +48,11 @@
     },
     "FARM_挑战对手": {
         "recognition": "OCR",
-        "expected": ["挑战"],
+        "expected": ["挑战", "碾压"],
         "action": "Click",
         "roi" : [263,869,184,57],
-        "next": ["FARM_挑战开始战斗"],
+        "post_delay": 1000,
+        "next": ["FARM_挑战开始战斗", "FARM_挑战结算页面"],
         "interrupt":["启动再等等"]
     },
     "FARM_挑战开始战斗": {
@@ -75,7 +76,8 @@
         "target": [60, 1215, 0, 0],
         "action": "Click",
         "post_delay": 1000,
-        "next": ["FARM_点击幻想阶梯"],
+        // "next": ["FARM_点击幻想阶梯"],
+        "next": ["FARM_点击羁绊冒险", "FARM_点击地图探索"],
         "interrupt":["FARM_竞技返回笔记首页", "启动再等等"]
     }
 }

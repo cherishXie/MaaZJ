@@ -21,7 +21,7 @@
         "action": "Click",
         "post_delay": 1000,
         "next":["FARM_周任务领取", "FARM_无周任务"],
-        "interrupt":["启动再等等"]
+        "interrupt":["FARM_任务奖励", "启动再等等"]
     },
      "FARM_无周任务": {
         "recognition": "OCR",

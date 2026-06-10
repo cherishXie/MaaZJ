@@ -1,0 +1,47 @@
+{
+    "FARM_旅程庆典":{
+        "recognition": "OCR",
+        "expected": "旅程庆典",
+        "action": "Click",
+        "order_by": "Vertical",
+        "post_delay": 1000,
+        "next":["FARM_旅程庆典页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_旅程庆典页面":{
+        "recognition": "OCR",
+        "expected": "庆典签到",
+        "roi" : [3,26,347,846],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next":["FARM_领取旅程庆典礼包"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_领取旅程庆典签到":{
+        "recognition": "OCR",
+        "expected": ["领取", "补签"],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_领取每日签到", "FARM_旅程庆典返回活动汇总"],
+        "interrupt":["启动再等等"]
+    },
+
+    "FARM_领取旅程庆典礼包":{
+        "recognition": "OCR",
+        "expected": ["领取", "补签"],
+        "action": "Click",
+        "post_delay": 500,
+        "next":["FARM_领取每日签到", "FARM_旅程庆典返回活动汇总"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_旅程庆典返回活动汇总": {
+        "recognition": "OCR",
+        "expected": "活动汇总",
+        "roi" : [17,3,173,86],
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt":["FARM_返回到活动汇总", "执行滑动", "启动再等等"]
+    }
+}

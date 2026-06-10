@@ -1,0 +1,53 @@
+{
+    "挑战赛结束": {
+        "recognition": "TemplateMatch",
+        "template": "挑战赛.png",
+        "roi" : [502,89,217,830],
+        "action": "Click",
+        "next": ["挑战赛界面", "领取挑战赛", "挑战赛_已领取"],
+        "post_delay": 1000,
+        "interrupt": ["挑战赛结束", "启动再等等"]
+    },
+    "挑战赛界面": {
+        "recognition": "OCR",
+        "expected": ["挑战赛"],
+        "roi" : [12,3,268,145],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next": ["领取挑战赛", "挑战赛_已领取"],
+        "interrupt": ["挑战赛结束", "挑战赛_返回主家园", "启动再等等"]
+    },
+    "领取挑战赛": {
+        "recognition": "TemplateMatch",
+        "template": "领取.png",
+        "roi" : [42,635,614,474],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": ["领取小推车", "用户切换_点击菜单"],
+        "interrupt": ["挑战赛_确认", "挑战赛_返回主家园", "启动再等等"]
+    },
+    "挑战赛_已领取": {
+        "recognition": "OCR",
+        "expected": ["已领取"],
+        "post_delay": 500,
+        "action": "Click",
+        "next": ["领取小推车", "用户切换_点击菜单"],
+        "interrupt":["启动再等等"]
+    },
+    "挑战赛_确认": {
+        "recognition": "OCR",
+        "expected": ["确认"],
+        "post_delay": 500,
+        "action": "Click",
+        "interrupt":["启动再等等"]
+    },
+    "挑战赛_返回主家园": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 500,
+        "action": "Click",
+        "interrupt":["启动再等等"]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "点击罗小黑联动": {
+        "recognition": "OCR",
+        "expected": "联动开启中",
+        "action": "Click",
+        "post_delay": 1500,
+        "next": ["点击小黑的冒险"],
+        "interrupt": ["启动再等等"]
+    },
+    "点击小黑的冒险": {
+        "recognition": "TemplateMatch",
+        "template": ["小黑的冒险.png"],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["点击小黑联动_关卡"],
+        "interrupt": ["启动再等等"]
+    },
+    "点击小黑联动_关卡": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "target_offset": [
+            -100,
+            50,
+            0,
+            0
+        ],
+        "roi" : [22,70,690,1102],
+        "post_delay": 500,
+        "next": ["点击小黑联动_关卡"],
+        "interrupt": ["小黑联动任务中状态文字", "对话继续", "聊天继续", "获得奖励",  "小黑活动点击困难", "启动再等等"]
+    },
+    "小黑联动任务中状态文字":{
+        "recognition": "OCR",
+        "expected": ["进入", "开始战斗"],
+        "action": "Click"
+    },
+    "对话继续":{
+        "recognition": "TemplateMatch",
+        "template": ["continue.png"],
+        "roi" : [35,697,655,358],
+        "action": "Click"
+    },
+    "聊天继续": {
+        "recognition": "TemplateMatch",
+        "roi" : [249,1169,215,110],
+        "template": ["next.png"],
+        "action": "Click"
+    },
+    "获得奖励": {
+        "recognition": "TemplateMatch",
+        "template": ["获得奖励.png"],
+        "action": "Click"
+    },
+    "小黑活动点击困难": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "roi" : [453,1153,263,119],
+        "target": [558, 1216, 0, 0],
+        "interrupt": ["启动再等等"]
+    }
+}

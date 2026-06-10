@@ -1,0 +1,52 @@
+{
+    "FARM_点击地图探索":{
+        "recognition": "OCR",
+        "expected": "地图探索",
+        "action": "Click",
+        "post_delay": 800,
+        "next": ["FARM_地图探索页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_地图探索页面": {
+        "recognition": "OCR",
+        "expected": "命运果实",
+        "action": "Click",
+        "post_delay": 800,
+        "target": [94, 600, 0, 0],
+        "next": ["FARM_前往地图"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_前往地图": {
+        "recognition": "OCR",
+        "expected": "命运果实",
+        "action": "Click",
+        "post_delay": 800,
+        "target": [568, 637, 0, 0],
+        "next": ["FARM_确定前往地图"],
+        "interrupt":["FARM_前往地图", "启动再等等"]
+    },
+    "FARM_确定前往地图": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "action": "Click",
+        "post_delay": 800,
+        "next": ["FARM_到达探索地图"],
+        "interrupt":["FARM_混沌点击绯乐", "启动再等等"]
+    },
+    "FARM_到达探索地图": {
+        "recognition": "TemplateMatch",
+        "template": "果实探索.png",
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_确定探索果实", "FARM_到达探索地图"],
+        "interrupt":["FARM_混沌点击绯乐", "启动再等等"]
+    },
+    "FARM_确定探索果实": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "action": "Click",
+        "post_delay": 3000,
+        "next": ["FARM_点击主家园"],
+        "interrupt":["FARM_混沌点击绯乐", "升级礼包弹窗", "礼包弹窗", "FARM_返回家园界面", "启动再等等"]
+    }
+}

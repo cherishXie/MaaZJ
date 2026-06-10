@@ -1,0 +1,89 @@
+{
+    "FARM_点击羁绊冒险":{
+        "recognition": "OCR",
+        "expected": "羁绊冒险",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_羁绊冒险页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_羁绊冒险页面": {
+        "recognition": "OCR",
+        "expected": "羁绊冒险",
+        "action": "DoNothing",
+        "roi" : [1,1,498,121],
+        "next": ["FARM_收获冒险奖励", "FARM_开始委托冒险", "FARM_羁绊冒险返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_收获冒险奖励": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "roi" : [10,77,707,913],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_委派结束", "FARM_收获冒险奖励", "FARM_羁绊冒险返回笔记首页"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_委派结束": {
+        "recognition": "OCR",
+        "expected": ["委派结束"],
+        "roi" : [10,77,707,913],
+        "target": [350, 30, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_委派结束", "FARM_羁绊冒险页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_开始委托冒险": {
+        "recognition": "TemplateMatch",
+        "template": "蓝点.png",
+        "roi" : [10,77,707,913],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_委托冒险选择", "FARM_开始委托冒险"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_委托冒险选择": {
+        "recognition": "OCR",
+        "expected": ["快速选择"],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_开始委派"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_开始委派": {
+        "recognition": "OCR",
+        "expected": ["开始委派"],
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["FARM_委派开始", "FARM_委托确定"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_委托确定": {
+        "recognition": "OCR",
+        "expected": ["确定"],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_委派开始"],
+        "interrupt":["启动再等等"]
+    },
+     "FARM_委派开始": {
+        "recognition": "OCR",
+        "expected": ["委派开始"],
+        "action": "Click",
+        "target": [350, 30, 0, 0],
+        "post_delay": 1000,
+        "next": ["FARM_委派开始", "FARM_羁绊冒险页面"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_羁绊冒险返回笔记首页": {
+        "recognition": "TemplateMatch", 
+        "template" : "笔记.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["FARM_点击地图探索"],
+        "interrupt":["FARM_羁绊冒险返回笔记首页", "启动再等等"]
+    }
+}

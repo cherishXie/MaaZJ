@@ -18,15 +18,14 @@
         "recognition": "OCR",
         "expected": "森之国",
         "action": "Click",
-        "next": ["FARM_混沌点击绯乐", "FARM_到达森之国"],
-        "interrupt":["启动再等等"]
+        "next": ["FARM_到达森之国"],
+        "interrupt":["FARM_混沌点击绯乐", "启动再等等"]
     },
     "FARM_混沌点击绯乐":{
         "recognition": "OCR",
-        "expected": "绯乐",
+        "expected": ["绯乐", "领取"],
         "action": "Click",
         "roi" : [22,446,651,616],
-        "next": ["FARM_混沌点击绯乐", "FARM_到达森之国"],
         "post_delay": 1000,
         "interrupt":["启动再等等"]
     },
@@ -36,7 +35,8 @@
         "action": "DoNothing",
         "roi" : [530,244,165,61],
         "next": ["FARM_点击小地图"],
-        "interrupt":["启动再等等"]
+        "post_delay": 1000,
+        "interrupt":["FARM_混沌点击绯乐", "启动再等等"]
     },
     "FARM_点击小地图": {
         "action": "Click",
@@ -47,7 +47,7 @@
     "FARM_小地图页面":{
         "recognition": "OCR",
         "expected": "森之国",
-        "roi" : [372,1136,337,140],
+        "roi" : [7,1106,693,173],
         "action": "DoNothing",
         "next": ["FARM_寻找森之国二"],
         "interrupt":["启动再等等"]

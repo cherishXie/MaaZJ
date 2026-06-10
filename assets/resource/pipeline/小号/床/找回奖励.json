@@ -1,0 +1,67 @@
+{
+    "奖励找回界面": {
+        "recognition": "OCR",
+        "expected": ["奖励找回"],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": ["一键找回", "一键购买", "找回_全部放弃"],
+        "interrupt":["FARM_混沌点击绯乐", "启动再等等"]
+    },
+    "一键找回": {
+        "recognition": "OCR",
+        "expected": ["一键找回"],
+        "action": "Click",
+        "post_delay": 3500,
+        "next": ["一键购买", "找回_全部放弃"],
+        "interrupt":["找回_点击空白处关闭", "启动再等等"]
+    },
+    "找回_点击空白处关闭":{
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "post_delay": 1000,
+        "action": "Click",
+        "interrupt": ["启动再等等"],
+    },
+    "一键购买": {
+        "recognition": "OCR",
+        "expected": ["一键购买"],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": ["购买奖励界面", "一键购买"],
+        "interrupt":["找回_点击空白处关闭", "启动再等等"]
+    },
+    "购买奖励界面": {
+        "recognition": "OCR",
+        "expected": ["使用晨星", "如下奖励"],
+        "action": "DoNothing",
+        "post_delay": 1000,
+        "next": ["购买奖励", "找回_全部放弃"],
+        "interrupt":["找回_点击空白处关闭", "启动再等等"]
+    },
+    "购买奖励": {
+        "recognition": "OCR",
+        "expected": ["购买"],
+        "action": "Click",
+        "index": 1,
+        "post_delay": 1000,
+        "next": ["获得奖励_点击空白处关闭"],
+        "interrupt":["启动再等等"]
+    },
+    "获得奖励_点击空白处关闭":{
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "post_delay": 1000,
+        "action": "Click",
+        "next": ["找回_全部放弃"],
+        "interrupt": ["启动再等等"],
+    },
+    "找回_全部放弃":{
+        "recognition": "OCR",
+        "expected": ["全部放弃","已找回全部奖励"],
+        "action": "Click",
+        "post_delay": 1500,
+        "target": [60, 1215, 0, 0],
+        "next": ["苹果树领取1", "小推车资源领取2"],
+        "interrupt": ["启动再等等"]
+    }
+}

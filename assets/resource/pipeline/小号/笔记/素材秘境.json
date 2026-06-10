@@ -26,7 +26,7 @@
     "FARM_铁矿页面": {
         "recognition": "OCR",
         "expected": "铁石",
-        "action": "Click",
+        "action": "DoNothing",
         "roi" : [129,1141,553,136],
         "next": ["FARM_铁矿点击买次数"],
         "interrupt":["启动再等等"]
@@ -79,7 +79,7 @@
     "FARM_黄金页面": {
         "recognition": "OCR",
         "expected": "黄金",
-        "action": "Click",
+        "action": "DoNothing",
         "roi" : [129,1141,553,136],
         "next": ["FARM_黄金点击买次数"],
         "interrupt":["启动再等等"]
@@ -132,7 +132,7 @@
     "FARM_怪物页面": {
         "recognition": "OCR",
         "expected": "怪物",
-        "action": "Click",
+        "action": "DoNothing",
         "roi" : [129,1141,553,136],
         "next": ["FARM_怪物点击买次数"],
         "interrupt":["启动再等等"]
@@ -185,7 +185,7 @@
     "FARM_砂石页面": {
         "recognition": "OCR",
         "expected": "砂石",
-        "action": "Click",
+        "action": "DoNothing",
         "roi" : [129,1141,553,136],
         "next": ["FARM_砂石点击买次数"],
         "interrupt":["启动再等等"]
@@ -234,7 +234,7 @@
         "roi" : [1,1,498,121],
         "action": "Click",
         "inverse": true,
-        "post_delay": 300,
+        "post_delay": 1000,
         "target": [60, 1215, 0, 0],
         "interrupt":["启动再等等"]
     },

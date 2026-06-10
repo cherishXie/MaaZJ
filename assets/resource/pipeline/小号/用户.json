@@ -3,7 +3,7 @@
         "recognition": "TemplateMatch",
         "template": "任务菜单.png",
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 1000,
         "next":["用户切换_菜单页面", "用户切换_聊天频道"],
         "interrupt":["用户切换_点击菜单", "用户切换_关闭公告", "启动再等等"]
     },
@@ -53,15 +53,15 @@
         "recognition": "OCR",
         "expected": "账号中心",
         "action": "Click",
-        "post_delay": 300,
+        "post_delay": 600,
         "next":["用户切换_点击切换账号"],
-        "interrupt":["用户切换_点击账号中心", "用户切换_点击雷霆账密登录", "启动再等等"]
+        "interrupt":["用户切换_点击菜单", "用户切换_点击账号中心", "用户切换_点击雷霆账密登录", "启动再等等"]
     },
     "用户切换_点击切换账号": {
         "recognition": "OCR",
         "expected": "切换账号",
         "action": "Click",
-        "post_delay": 300,
+        "post_delay": 600,
         "next":["用户切换_点击雷霆账密登录"],
         "interrupt":["用户切换_点击切换账号", "启动再等等"]
     },
@@ -78,8 +78,9 @@
     "用户执行滑动": {
         "action": "Swipe",
         "begin": [400, 680, 0, 0],
-        "duration": 1500,
-        "post_wait_freezes": 1500
+        "duration": 1000,
+        "post_wait_freezes": 1000,
+        "interrupt": ["启动再等等"]
     },
     "用户切换_账号列表":{
         "recognition": "OCR",
@@ -87,12 +88,12 @@
         "target": [590, 600, 0, 0],
         "action": "Click",
         "next":["用户切换_选择账号"],
-        "post_delay": 1000,
+        "post_delay": 2000,
         "interrupt":["用户执行滑动", "启动再等等"]
     },
     "用户切换_选择账号": {
         "recognition": "OCR",
-        "expected": "17701717598",
+        "expected": "18918203738",
         "action": "Click",
         "next":["用户切换_同意协议"],
         "interrupt":["启动再等等"]
@@ -107,7 +108,8 @@
         "recognition": "OCR",
         "expected": "雷霆账号登录",
         "action": "Click",
-        "next":["sub_启动杖剑传说官_关闭公告"],
+        "post_delay": 5000,
+        "next":["sub_启动杖剑传说官_关闭公告", "sub_启动杖剑传说官_切换服务器"],
         "interrupt":["启动再等等"]
     }
     

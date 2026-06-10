@@ -5,7 +5,8 @@
         "action": "Click",
         "next":["FARM_领取本周精选", "FARM_本周精选已领取"],
         "timeout": 20000,
-        "on_error": "FARM_返回主家园"
+        "on_error": "FARM_返回主家园",
+        "interrupt":["启动再等等"]
     },
     "FARM_领取本周精选":{
         "recognition": "OCR",

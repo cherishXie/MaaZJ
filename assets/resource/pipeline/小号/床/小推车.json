@@ -1,29 +1,122 @@
 {
     "领取小推车": {
         "recognition": "TemplateMatch",
-        "template": "领取小推车.png",
+        "template": ["领取小推车.png", "绯乐找回.png"],
+        "roi" : [3,405,228,386],
         "action": "Click",
-        "post_delay": 1500,
-        "next": ["苹果树领取", "小推车资源领取", "用户切换_点击菜单"],
-        "interrupt":["启动再等等"]
+        "post_delay": 3000,
+        "next": ["樱花树界面", "绯乐界面"],
+        "interrupt":["升级礼包弹窗", "启动再等等"]
     },
-    "小推车资源领取": {
+    "樱花树界面": {
         "recognition": "TemplateMatch",
-        "template" : ["小推车资源领取.png", "领取小推车2.png", "小推车3.png", "领取小推车3.png"],
-        "roi" : [14,465,705,507],
+        "template" : ["樱花树.png"],
         "action": "Click",
+        "target": [330, 875, 0, 0],
         "post_delay": 500,
         "threshold": 0.7,
-        "next": ["小推车资源领取", "用户切换_点击菜单"],
+        "next": ["苹果树领取", "小推车资源领取1"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "FARM_混沌点击绯乐", "启动再等等"]
+    },
+    "绯乐界面": {
+        "recognition": "TemplateMatch",
+        "template" : ["绯乐.png", "绯乐1.png", "绯乐2.png"],
+        "roi" : [15,352,700,611],
+        "action": "Click",
+        "post_delay": 1500,
+        "target": [365, 870, 0, 0],
+        "threshold": 0.3,
+        "next": ["奖励找回界面"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "FARM_混沌点击绯乐", "启动再等等"]
+    },
+    "小推车资源领取1": {
+        "action": "Click",
+        "target": [330, 875, 0, 0],
+        "post_delay": 500,
+        "threshold": 0.7,
+        "next": ["小推车界面", "小推车资源领取1"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "FARM_关闭推送", "启动再等等"]
+    },
+    "小推车资源领取2": {
+        "action": "Click",
+        "target": [495, 865, 0, 0],
+        "post_delay": 500,
+        "threshold": 0.7,
+        "next": ["小推车界面", "小推车资源领取2"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "FARM_关闭推送", "启动再等等"]
+    },
+    "小推车界面": {
+        "recognition": "OCR",
+        "expected": "小推车",
+        "roi" : [38,133,279,500],
+        "action": "DoNothing",
+        "next": ["小推车一键领取"],
         "interrupt":["启动再等等"]
+    },
+    "小推车一键领取": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "next": ["主家园界面"],
+        "interrupt":["FARM_返回家园界面", "启动再等等"]
     },
     "苹果树领取": {
         "recognition": "TemplateMatch",
-        "template": ["苹果树.png", "苹果树白天.png"],
+        "template": ["苹果树晚上.png", "苹果树白天.png"],
         "threshold": 0.85,
         "action": "Click",
         "post_delay": 500,
-        "next": ["小推车资源领取", "用户切换_点击菜单"],
+        "next": ["小推车资源领取1", "用户切换_点击菜单"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"]
+    },
+    "苹果树领取1": {
+        "recognition": "TemplateMatch",
+        "template": ["苹果树晚上.png", "苹果树白天.png"],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 500,
+        "next": ["小推车资源领取2", "用户切换_点击菜单"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"]
+    },
+    "主家园界面": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "post_delay": 500,
+        "action": "DoNothing",
+        "next": ["点击获取果实"],
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"]
+    },
+    "点击获取果实": {
+        "action": "Click",
+        "target": [560, 642, 0, 0],
+        "post_delay": 500,
+        "next": ["幻兽界面"],
+        "interrupt":["点击获取果实", "启动再等等"]
+    },
+    "幻兽界面": {
+        "recognition": "OCR",
+        "expected": "幻兽",
+        "roi" : [3,3,247,115],
+        "action": "Click",
+        "target": [60, 1215, 0, 0],
+        "next": ["用户切换_点击菜单"],
+        "interrupt":["FARM_返回家园界面", "启动再等等"]
+    },
+    "FARM_返回家园界面": {
+        "recognition": "TemplateMatch",
+        "template": "家园图标.png",
+        "inverse": true,
+        "target": [60, 1215, 0, 0],
+        "post_delay": 500,
+        "action": "Click",
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "启动再等等"]
+    },
+    "FARM_关闭推送": {
+        "recognition": "OCR",
+        "expected": ["开启推送"],
+        "target": [60, 1215, 0, 0],
+        "action": "Click",
+        "post_delay": 500,
         "interrupt":["启动再等等"]
     }
 }

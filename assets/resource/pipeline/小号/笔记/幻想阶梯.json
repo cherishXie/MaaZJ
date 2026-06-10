@@ -11,7 +11,7 @@
         "target": [600, 290, 0, 0],
         "action": "Click",
         "post_delay": 1000,
-        "next": ["FARM_挑战幻想阶梯", "FARM_切回幻想阶梯"],
+        "next": ["FARM_挑战幻想阶梯", "FARM_切回幻想阶梯", "FARM_一键挑战幻想阶梯"],
         "interrupt":["启动再等等"]
     },
     "FARM_挑战幻想阶梯":{
@@ -19,6 +19,13 @@
         "expected": ["挑战"],
         "action": "Click",
         "next": ["FARM_自动挑战幻想阶梯"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_一键挑战幻想阶梯":{
+        "recognition": "OCR",
+        "expected": ["一键"],
+        "action": "Click",
+        "next": ["FARM_幻想阶梯返回1"],
         "interrupt":["启动再等等"]
     },
     "FARM_切回幻想阶梯":{
@@ -54,7 +61,7 @@
         "target": [60, 1215, 0, 0],
         "action": "Click",
         "post_delay": 1000,
-        "next": ["FARM_点击主家园"],
+        "next": ["FARM_点击地图探索"],
         "interrupt":["启动再等等"]
     }
 }

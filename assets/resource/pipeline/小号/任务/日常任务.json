@@ -1,8 +1,10 @@
 {
     "FARM_日常任务列表": {
         "recognition": "OCR",
+        "roi" : [22,15,258,93],
         "expected": "日常任务",
         "action": "DoNothing",
+        "post_delay": 500,
         "interrupt":["启动再等等"],
         "next": ["FARM_日常任务", "FARM_无日常任务"]
     },
@@ -11,8 +13,16 @@
         "expected": "领取",
         "roi" : [238,168,446,1102],
         "action": "Click",
-        "post_delay": 1000,
-        "next":["FARM_日常任务", "FARM_无日常任务"],
+        "post_delay": 500,
+        "next":["FARM_日常任务列表"],
+        "interrupt":["FARM_任务奖励", "启动再等等"]
+    },
+    "FARM_任务奖励": {
+        "recognition": "OCR",
+        "roi" : [105,437,194,110],
+        "target": [15, 45, 0, 0],
+        "expected": ["目标"],
+        "action": "Click",
         "interrupt":["启动再等等"]
     },
     "FARM_无日常任务": {
@@ -21,8 +31,8 @@
         "inverse": true,
         "roi" : [238,168,446,1102],
         "action": "DoNothing",
-        "post_delay": 1000,
+        "post_delay": 500,
         "next":["FARM_周任务"],
-        "interrupt":["启动再等等"]
+        "interrupt":["FARM_任务奖励", "启动再等等"]
     }
 }

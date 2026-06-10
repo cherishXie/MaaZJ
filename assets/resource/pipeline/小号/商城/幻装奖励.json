@@ -1,14 +1,14 @@
 {
     "FARM_点击幻装1": {
-        "recognition": "TemplateMatch",
-        "template": "外观1.png",
+        "recognition": "OCR",
+        "expected": "半妖半",
         "action": "Click",
         "next":["FARM_幻装奖励页面1"],
         "interrupt": ["启动再等等"]
     },
     "FARM_幻装奖励页面1": {
         "recognition": "OCR",
-        "expected": "30元",
+        "expected": "30",
         "action": "Click",
         "target": [73, 741, 0, 0],
         "roi" : [273,1064,166,63],
@@ -22,19 +22,19 @@
         "target": [60, 1215, 0, 0],
         "post_delay": 1000,
         "action": "Click",
-        "next": ["FARM_幻装奖励页面1返回到活动列表", "FARM_点击幻装2", "FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
+        "next": ["FARM_幻装奖励页面1返回到活动列表", "FARM_点击幻装2", "FARM_启程好礼", "FARM_点击巡礼之证"],
         "interrupt":["执行滑动", "启动再等等"]
     },
     "FARM_点击幻装2": {
-        "recognition": "TemplateMatch",
-        "template": "外观2.png",
+        "recognition": "OCR",
+        "expected": "红莲",
         "action": "Click",
         "next":["FARM_幻装奖励页面2"],
         "interrupt": ["启动再等等"]
     },
      "FARM_幻装奖励页面2": {
         "recognition": "OCR",
-        "expected": "18元",
+        "expected": "18",
         "action": "Click",
         "target": [73, 741, 0, 0],
         "roi" : [273,1064,166,63],
@@ -48,7 +48,7 @@
         "target": [60, 1215, 0, 0],
         "post_delay": 1000,
         "action": "Click",
-        "next": ["FARM_幻装奖励页面2返回到活动列表", "FARM_启程好礼", "FARM_点击巡礼之证", "FARM_无启程好礼"],
+        "next": ["FARM_幻装奖励页面2返回到活动列表", "FARM_启程好礼", "FARM_点击巡礼之证"],
         "interrupt":["执行滑动", "启动再等等"]
     }
 }

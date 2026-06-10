@@ -4,15 +4,19 @@
         "expected": "精彩活动",
         "roi" : [597,105,108,110],
         "action": "Click",
+        "post_delay": 2500,
         "next":["FARM_活动汇总"],
-        "interrupt":["启动再等等"]
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "主家园关闭", "FARM_精彩活动", "启动再等等"]
     },
     "FARM_活动汇总":{
         "recognition": "OCR",
         "expected": "活动汇总",
         "roi" : [17,3,173,86],
         "action": "DoNothing",
-        "next":["FARM_赛季预告", "FARM_点击赛季活动", "FARM_每日签到"],
+        "post_delay": 1000,
+        // "next":["FARM_点击赛季活动", "FARM_每日签到"],
+        "next":["FARM_秘宝大作战", "FARM_每日签到"],
+        // "next":["FARM_赛季预告", "FARM_秘宝大作战", "FARM_每日签到"],
         "interrupt":["执行滑动", "启动再等等"]
     },
     "FARM_返回到活动汇总":{
@@ -30,9 +34,15 @@
         "template": "任务菜单.png",
         "inverse": true,
         "target": [60, 1215, 0, 0],
-        "post_delay": 1000,
+        "post_delay": 1500,
         "action": "Click",
-        "interrupt":["启动再等等"],
+        "interrupt":["主家园关闭", "启动再等等"],
         "next": ["FARM_点击任务菜单", "FARM_返回到主家园"]
+    },
+    "主家园关闭":{
+        "recognition": "OCR",
+        "expected": ["空白处"],
+        "action": "Click",
+        "target": [26, 121, 0, 0]
     }
 }

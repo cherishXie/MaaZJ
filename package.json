@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "agent:new": "node scripts/agent-workflow/new-task.mjs",
+    "agent:status": "node scripts/agent-workflow/status.mjs",
+    "agent:advance": "node scripts/agent-workflow/advance.mjs",
+    "agent:archive": "node scripts/agent-workflow/archive-current.mjs"
+  },
   "devDependencies": {
     "prettier-plugin-multiline-arrays": "^3.0.6"
   }

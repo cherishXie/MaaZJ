@@ -5,7 +5,8 @@
         "target": [220, 1220, 0, 0],
         "action": "Click",
         "post_delay": 1000,
-        "next": ["FARM_点击竞技", "FARM_点击幻想阶梯"],
+        // "next": ["FARM_点击竞技", "FARM_点击幻想阶梯"],
+        "next": ["FARM_点击竞技"],
         "interrupt":["启动再等等"]
     }
 }

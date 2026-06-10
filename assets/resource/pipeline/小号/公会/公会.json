@@ -57,6 +57,7 @@
         "recognition": "OCR",
         "expected": ["公会大厅", "会大"],
         "action": "Click",
+        "post_delay": 500,
         "next": ["FARM_捐赠公会页面", "FARM_捐赠公会"],
         "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
@@ -66,6 +67,7 @@
         "action": "Click",
         "next": ["FARM_捐赠页面", "FARM_捐赠公会页面", "FARM_捐赠公会"],
         "roi" : [8,986,684,179],
+        "post_delay": 500,
         "interrupt":["FARM_空白处关闭", "启动再等等"]
     },
     "FARM_捐赠页面": {
@@ -73,6 +75,7 @@
         "expected": ["公会捐赠"],
         "roi" : [223,210,258,61],
         "action": "DoNothing",
+        "post_delay": 1000,
         "next": ["FARM_免费捐赠", "FARM_返回到公会大厅"],
         "interrupt":["启动再等等"]
     },

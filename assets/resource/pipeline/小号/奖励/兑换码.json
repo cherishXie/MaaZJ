@@ -1,0 +1,26 @@
+{
+    "点击兑换码": {
+        "recognition": "OCR",
+        "expected": "兑换码",
+        "action": "Click",
+        "next": ["输入兑换码"],
+        "post_delay": 1000,
+        "interrupt": ["启动再等等"]
+    },
+    "输入兑换码": {
+        "recognition": "OCR",
+        "expected": "请输入兑换码",
+        "action": "InputText",
+        "input_text": "星霜盛典活动开启",
+        "post_delay": 500,
+        "next": ["确定输入兑换码"],
+        "interrupt": ["启动再等等"]
+    },
+    "确定输入兑换码": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "action": "Click",
+        "post_delay": 500,
+        "interrupt": ["启动再等等"]
+    }
+}

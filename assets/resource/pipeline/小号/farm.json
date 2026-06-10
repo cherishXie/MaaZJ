@@ -8,7 +8,8 @@
         "recognition": "TemplateMatch",
         "template": "家园图标.png",
         "action": "Click",
+        "post_delay": 500,
         "next": ["FARM_精彩活动"],
-        "interrupt":["启动再等等"]
+        "interrupt":["升级礼包弹窗", "礼包弹窗", "FARM_点击主家园", "启动再等等"]
     }
 }

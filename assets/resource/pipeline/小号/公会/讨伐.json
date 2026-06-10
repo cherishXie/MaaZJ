@@ -19,15 +19,17 @@
         "recognition": "OCR",
         "expected": "公会战",
         "action": "Click",
-        "post_delay": 500,
-        "next": ["FARM_领取公会战", "启动再等等"]
+        "post_delay": 1000,
+        "interrupt": ["启动再等等"],
+        "next": ["FARM_领取公会战", "FARM_返回公会活动"]
     },
     "FARM_领取公会战": {
-        "target": [375, 978, 0, 0],
+        "recognition": "OCR",
+        "expected": "领取",
         "action": "Click",
         "post_delay": 500,
-        "next": ["FARM_公会讨伐"],
-        "interrupt": ["FARM_返回公会活动", "启动再等等"]
+        "next": ["FARM_返回公会活动"],
+        "interrupt": ["启动再等等"]
     },
     "FARM_返回公会活动": {
         "recognition": "OCR",
@@ -35,6 +37,8 @@
         "inverse": true,
         "target": [60, 1215, 0, 0],
         "action": "Click",
+        "interrupt": ["FARM_返回公会活动", "启动再等等"],
+        "next": ["FARM_公会讨伐"],
         "post_delay": 500
     },
     "FARM_公会讨伐":{

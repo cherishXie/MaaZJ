@@ -70,11 +70,12 @@
   },
   "sub_启动杖剑传说官_点击开始": {
     "recognition": "OCR",
-    "expected": ["健康游戏", "开始游戏"],
+    "expected": ["健康游戏忠告"],
     "action": "Click",
+    "target": [56, 270, 0, 0],
     "post_delay": 1000,
-    "interrupt": ["启动再等等"],
-    "next":["sub_启动杖剑传说官_点击开始", "FARM_点击杂货店"]
+    "interrupt": ["sub_启动杖剑传说官_点击开始", "启动再等等"],
+    "next":["登录进入主家园界面"]
   },
   "sub_关闭杖剑传说官": {
     "action": "StopApp",

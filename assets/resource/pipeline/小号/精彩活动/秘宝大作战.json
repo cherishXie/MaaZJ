@@ -40,6 +40,32 @@
         "action": "DoNothing",
         "roi" : [479,583,228,579],
         "post_delay": 500,
+        "next": ["FARM_判断是否需要领取秘宝礼包", "FARM_每日签到"],
+        "interrupt":["FARM_秘宝返回活动汇总", "执行滑动", "启动再等等"]
+    },
+    "FARM_判断是否需要领取秘宝礼包": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "roi" : [544,1155,173,107],
+        "target": [607, 1220, 0, 0],
+        "next": ["FARM_秘宝礼包礼包页面"],
+        "interrupt": ["启动再等等"]
+    },
+    "FARM_秘宝礼包礼包页面": {
+        "recognition": "OCR",
+        "expected": "树灵",
+        "action": "DoNothing",
+        "roi" : [17,233,475,330],
+        "next": ["FARM_领取秘宝礼包"],
+        "interrupt":["启动再等等"]
+    },
+    "FARM_领取秘宝礼包": {
+        "recognition": "TemplateMatch",
+        "template": "红点.png",
+        "action": "Click",
+        "roi" : [544,1155,173,107],
+        "target": [75, 335, 0, 0],
         "next": ["FARM_每日签到"],
         "interrupt":["FARM_秘宝返回活动汇总", "执行滑动", "启动再等等"]
     },

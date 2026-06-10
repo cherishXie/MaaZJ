@@ -4,13 +4,15 @@
         "template": "任务菜单.png",
         "action": "Click",
         "next":["FARM_任务"],
+        "post_delay": 1000,
         "interrupt":["启动再等等"]
     },
     "FARM_任务": {
-        "recognition": "OCR",
-        "expected": "任务",
+        "recognition": "TemplateMatch",
+        "template": "任务图标.png",
         "action": "Click",
-        "interrupt":["启动再等等"],
+        "post_delay": 1000,
+        "interrupt":["FARM_任务", "FARM_任务奖励", "启动再等等"],
         "next": ["FARM_日常任务列表"]
     },
     "FARM_任务返回": {
