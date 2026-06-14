@@ -25,7 +25,8 @@ For follow-up MaaZJ refactor tasks:
 3. Identify consumed artifacts and whether they are stale, missing fields, or inconsistent with runtime files.
 4. Keep allowed and forbidden paths explicit in the task plan.
 5. Apply the minimum validation layer required by the task.
-6. Before review, test, or final, answer whether D4, D5, or N1 is needed.
+6. For D/T tasks or CI readonly validation, use `python .\check_ci_readonly.py` as the T1-T5 V0 aggregate when that script exists, then add any task-specific V1-V4 checks required by the risk and touched files.
+7. Before review, test, or final, answer whether D4, D5, or N1 is needed.
 
 ## D4/D5/N1 Decisions
 
@@ -45,5 +46,7 @@ Do not write one-off task logs, temporary guesses, or unverified exploration fin
 - V3: real controller flow reaching expected key nodes or terminal states.
 - V4: reproducible evidence such as logs, screenshots, recordings, debug records, or manual observation notes.
 - V5: regression matrix across multiple important flows.
+
+`python .\check_ci_readonly.py` is the reusable T1-T5 readonly aggregate for V0/CI-style checks. It does not replace the V1 resource load requirement for resource changes, and it does not prove V2/V3/V4 behavior.
 
 For documentation-only, AGENTS-only, or skill-only work, resource validation can be skipped with a recorded reason. For resource changes, V1 is the minimum. For code or pipeline refactor completion, record V2/V3/V4 results or a degraded verification record with the reason, residual risk, and follow-up validation conditions.

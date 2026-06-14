@@ -110,6 +110,14 @@ rg -n '"entry"|"pipeline_override"|要查的节点名' assets\interface.json
 python .\check_resource.py .\assets\resource\
 ```
 
+执行 T1-T5 只读审计、T7 CI readonly checks 或 D/T 类任务需要统一 V0 检查时，可以运行：
+
+```powershell
+python .\check_ci_readonly.py
+```
+
+`check_ci_readonly.py` 只聚合当前只读检查入口，不替代资源变更的最低 V1 `check_resource.py`，也不证明 V2/V3/V4 真实流程。
+
 如果只改了文档或 AGENTS 文件，可以不运行资源检查，但应确认 Markdown 文件内容可读、路径准确。
 
 广泛重构或升级前，先阅读：
